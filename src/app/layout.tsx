@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +18,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* flex flex-col min-h-screen: لضمان بقاء الفوتر دائماً في أسفل الصفحة */}
       <body className={`${inter.className} bg-[#05070a] text-white flex flex-col min-h-screen`}>
         
+        {/* كود جوجل أدسنس المدمج */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6313859650856618"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
         {/* ========================================= */}
         {/* HEADER - الهيدر الزجاجي الاحترافي */}
         {/* ========================================= */}
@@ -36,7 +44,6 @@ export default function RootLayout({
               <Link href="/fortnite-maps" className="hover:text-cyan-400 transition-colors">Fortnite Maps</Link>
               <Link href="/sensitivity" className="hover:text-purple-400 transition-colors">Sens Converter</Link>
               <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
-              <Link href="/deals" className="text-rose-400 hover:text-rose-300 transition-colors flex items-center gap-1 font-black"><span className="animate-pulse">🔥</span> HOT DEALS</Link>
               
               {/* Dropdown Games */}
               <div className="group relative py-4">
@@ -53,6 +60,8 @@ export default function RootLayout({
                   </div>
                 </div>
               </div>
+
+              <Link href="/deals" className="text-rose-400 hover:text-rose-300 transition-colors flex items-center gap-1 font-black"><span className="animate-pulse">🔥</span> HOT DEALS</Link>
             </nav>
 
             {/* CTA Button */}
