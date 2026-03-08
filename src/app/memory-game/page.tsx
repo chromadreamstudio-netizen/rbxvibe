@@ -12,7 +12,6 @@ export default function MemoryGame() {
   const [matches, setMatches] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
 
-  // تهيئة اللعبة وخلط البطاقات
   const initializeGame = () => {
     const shuffledCards = [...GAMER_EMOJIS, ...GAMER_EMOJIS]
       .sort(() => Math.random() - 0.5)
@@ -38,7 +37,6 @@ export default function MemoryGame() {
     const clickedCardIndex = cards.findIndex((c) => c.id === id);
     if (cards[clickedCardIndex].isFlipped || cards[clickedCardIndex].isMatched) return;
 
-    // قلب البطاقة
     const newCards = [...cards];
     newCards[clickedCardIndex].isFlipped = true;
     setCards(newCards);
@@ -46,7 +44,6 @@ export default function MemoryGame() {
     const newFlippedCards = [...flippedCards, id];
     setFlippedCards(newFlippedCards);
 
-    // إذا تم قلب بطاقتين، نقوم بالتحقق
     if (newFlippedCards.length === 2) {
       setIsLocked(true);
       setMoves(moves + 1);
@@ -55,7 +52,6 @@ export default function MemoryGame() {
       const card2 = newCards.find((c) => c.id === newFlippedCards[1]);
 
       if (card1?.emoji === card2?.emoji) {
-        // تطابق صحيح
         setTimeout(() => {
           setCards((prevCards) =>
             prevCards.map((c) =>
@@ -67,7 +63,6 @@ export default function MemoryGame() {
           setIsLocked(false);
         }, 500);
       } else {
-        // عدم تطابق
         setTimeout(() => {
           setCards((prevCards) =>
             prevCards.map((c) =>
@@ -121,17 +116,15 @@ export default function MemoryGame() {
           <div
             key={card.id}
             onClick={() => handleCardClick(card.id)}
-            className={\`relative w-full aspect-square rounded-2xl cursor-pointer transition-transform duration-500 transform-style-3d \${
+            className={`relative w-full aspect-square rounded-2xl cursor-pointer transition-transform duration-500 transform-style-3d ${
               card.isFlipped || card.isMatched ? "rotate-y-180" : "hover:scale-105"
-            }\`}
+            }`}
           >
-            {/* وجه البطاقة الخلفي */}
-            <div className={\`absolute inset-0 bg-[#111827] border-2 border-white/10 rounded-2xl flex items-center justify-center backface-hidden \${card.isFlipped || card.isMatched ? 'hidden' : 'block'}\`}>
+            <div className={`absolute inset-0 bg-[#111827] border-2 border-white/10 rounded-2xl flex items-center justify-center backface-hidden ${card.isFlipped || card.isMatched ? 'hidden' : 'block'}`}>
               <span className="text-3xl opacity-20">❓</span>
             </div>
             
-            {/* وجه البطاقة الأمامي (الأيقونة) */}
-            <div className={\`absolute inset-0 \${card.isMatched ? 'bg-indigo-500/20 border-indigo-500' : 'bg-[#1a2333] border-indigo-400/50'} border-2 rounded-2xl flex items-center justify-center rotate-y-180 backface-hidden \${card.isFlipped || card.isMatched ? 'block' : 'hidden'}\`}>
+            <div className={`absolute inset-0 ${card.isMatched ? 'bg-indigo-500/20 border-indigo-500' : 'bg-[#1a2333] border-indigo-400/50'} border-2 rounded-2xl flex items-center justify-center rotate-y-180 backface-hidden ${card.isFlipped || card.isMatched ? 'block' : 'hidden'}`}>
               <span className="text-5xl drop-shadow-lg">{card.emoji}</span>
             </div>
           </div>

@@ -13,11 +13,10 @@ export default function ReactionTest() {
 
   const handleClick = () => {
     if (gameState === "idle" || gameState === "result") {
-      // Start the game
       setGameState("waiting");
       setMessage("Wait for green...");
       
-      const randomDelay = Math.floor(Math.random() * 3000) + 2000; // Random time between 2 to 5 seconds
+      const randomDelay = Math.floor(Math.random() * 3000) + 2000;
       
       timeoutRef.current = setTimeout(() => {
         setGameState("ready");
@@ -26,23 +25,20 @@ export default function ReactionTest() {
       }, randomDelay);
 
     } else if (gameState === "waiting") {
-      // Clicked too early
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       setGameState("result");
       setMessage("Too soon! Click to try again.");
       setReactionTime(null);
 
     } else if (gameState === "ready") {
-      // Clicked on time
       const endTime = Date.now();
       const timeTaken = endTime - startTimeRef.current;
       setReactionTime(timeTaken);
       setGameState("result");
-      setMessage(\`\${timeTaken} ms\`);
+      setMessage(`${timeTaken} ms`);
     }
   };
 
-  // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -64,17 +60,17 @@ export default function ReactionTest() {
 
       <div 
         onClick={handleClick}
-        className={\`w-full max-w-2xl mx-auto h-80 rounded-[2.5rem] flex flex-col items-center justify-center cursor-pointer transition-colors duration-200 select-none shadow-2xl border border-white/10
-          \${gameState === "idle" ? "bg-[#111827] hover:bg-[#1a2333]" : ""}
-          \${gameState === "waiting" ? "bg-red-500" : ""}
-          \${gameState === "ready" ? "bg-emerald-500" : ""}
-          \${gameState === "result" ? "bg-[#111827] hover:bg-[#1a2333]" : ""}
-        \`}
+        className={`w-full max-w-2xl mx-auto h-80 rounded-[2.5rem] flex flex-col items-center justify-center cursor-pointer transition-colors duration-200 select-none shadow-2xl border border-white/10
+          ${gameState === "idle" ? "bg-[#111827] hover:bg-[#1a2333]" : ""}
+          ${gameState === "waiting" ? "bg-red-500" : ""}
+          ${gameState === "ready" ? "bg-emerald-500" : ""}
+          ${gameState === "result" ? "bg-[#111827] hover:bg-[#1a2333]" : ""}
+        `}
       >
         <span className="text-5xl mb-6">
           {gameState === "idle" ? "⚡" : gameState === "waiting" ? "⏳" : gameState === "ready" ? "🎯" : "⏱️"}
         </span>
-        <h2 className={\`text-4xl md:text-5xl font-black \${gameState === "waiting" || gameState === "ready" ? "text-white" : "text-blue-400"}\`}>
+        <h2 className={`text-4xl md:text-5xl font-black ${gameState === "waiting" || gameState === "ready" ? "text-white" : "text-blue-400"}`}>
           {message}
         </h2>
         {gameState === "result" && reactionTime !== null && (
@@ -85,7 +81,6 @@ export default function ReactionTest() {
         )}
       </div>
 
-      {/* لوحة الشرف الوهمية للتحفيز */}
       <div className="max-w-2xl mx-auto mt-12 bg-[#0B0F19] rounded-3xl border border-white/5 p-8">
         <h3 className="text-xl font-bold text-white mb-4 border-b border-white/10 pb-4">Average Gamer Reflexes:</h3>
         <ul className="space-y-3 text-slate-400 font-medium">

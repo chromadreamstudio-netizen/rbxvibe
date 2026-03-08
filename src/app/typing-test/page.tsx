@@ -7,7 +7,7 @@ const GAMER_TEXT = "Rush B do not stop flashing mid planting the bomb. We need t
 
 export default function TypingTest() {
   const [userInput, setUserInput] = useState("");
-  const [timeLeft, setTimeLeft] = useState(30); // 30 seconds
+  const [timeLeft, setTimeLeft] = useState(30);
   const [isTestActive, setIsTestActive] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [wpm, setWpm] = useState(0);
@@ -39,12 +39,10 @@ export default function TypingTest() {
     setIsTestActive(false);
     setIsFinished(true);
     
-    // Calculate WPM (Words Per Minute)
     const wordsTyped = userInput.trim().split(" ").length;
     const calculatedWpm = Math.round((wordsTyped / 30) * 60);
     setWpm(calculatedWpm);
 
-    // Calculate Accuracy
     let correctChars = 0;
     for (let i = 0; i < userInput.length; i++) {
       if (userInput[i] === GAMER_TEXT[i]) {
@@ -69,14 +67,13 @@ export default function TypingTest() {
     }
   };
 
-  // تلوين الحروف (صحيح = أخضر، خطأ = أحمر)
   const renderText = () => {
     return GAMER_TEXT.split("").map((char, index) => {
       let color = "text-slate-500";
       if (index < userInput.length) {
         color = userInput[index] === char ? "text-emerald-400" : "text-rose-500 bg-rose-500/20 rounded-sm";
       }
-      return <span key={index} className={\`text-2xl font-mono transition-colors \${color}\`}>{char}</span>;
+      return <span key={index} className={`text-2xl font-mono transition-colors ${color}`}>{char}</span>;
     });
   };
 
@@ -104,7 +101,7 @@ export default function TypingTest() {
         </div>
         <div className="bg-[#0B0F19] p-6 rounded-3xl border border-white/10 text-center shadow-lg">
           <p className="text-slate-500 font-bold uppercase tracking-widest text-sm mb-2">Accuracy</p>
-          <p className="text-3xl font-black text-emerald-400">{isFinished ? \`\${accuracy}%\` : "--"}</p>
+          <p className="text-3xl font-black text-emerald-400">{isFinished ? `${accuracy}%` : "--"}</p>
         </div>
       </div>
 
