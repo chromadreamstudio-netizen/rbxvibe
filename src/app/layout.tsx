@@ -18,12 +18,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* كود جوجل أدسنس المدمج في منطقة الرأس لكي يراه روبوت جوجل فوراً */}
+        {/* كود جوجل أدسنس */}
         <meta name="google-adsense-account" content="ca-pub-6313859650856618" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6313859650856618"
           crossOrigin="anonymous"
+        ></script>
+
+        {/* كود جوجل أناليتكس لتتبع الزوار */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5EE5D10QM"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-Q5EE5D10QM');
+            `,
+          }}
         ></script>
       </head>
       <body className={`${inter.className} bg-[#05070a] text-white flex flex-col min-h-screen`}>
