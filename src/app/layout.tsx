@@ -29,7 +29,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        {/* Google Analytics */}
+        {/* Google Analytics - المصحح بنجاح */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-Q5EE5D100M"
           strategy="afterInteractive"
@@ -57,7 +57,7 @@ export default function RootLayout({
           </Link>
         </div>
 
-        {/* الهيدر الكامل - يحتوي على المدونة والألعاب وكل الأدوات */}
+        {/* الهيدر الكامل - يحتوي على المدونة والألعاب */}
         <header className="fixed top-10 w-full z-[100] backdrop-blur-xl bg-black/40 border-b border-white/5">
           <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
             {/* Logo */}
@@ -65,7 +65,7 @@ export default function RootLayout({
               <span className="text-emerald-500">Rbx</span>Vibe<span className="text-emerald-500">.</span>
             </Link>
 
-            {/* Navigation - تم إعادة المدونة والألعاب هنا */}
+            {/* Navigation */}
             <nav className="hidden lg:flex items-center gap-5 text-[10px] font-bold uppercase tracking-widest text-slate-400">
               <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
               <Link href="/roblox-codes" className="hover:text-emerald-400 transition-colors">Roblox</Link>
@@ -89,7 +89,6 @@ export default function RootLayout({
               <Link href="/deals" className="text-rose-400 hover:text-rose-300 transition-colors flex items-center gap-1 font-black underline decoration-2 underline-offset-4">🔥 DEALS</Link>
             </nav>
 
-            {/* Action Button */}
             <Link href="/roblox-codes" className="px-4 py-2 rounded-full bg-emerald-500 text-[#05070a] font-black text-[10px] hover:bg-emerald-400 transition-all">
               PRO TOOLS
             </Link>
@@ -100,27 +99,63 @@ export default function RootLayout({
           {children}
         </main>
 
-        {/* فوتر كامل يحتوي على روابط الألعاب والمدونة لتعزيز الـ SEO */}
-        <footer className="bg-[#0B0F19] border-t border-white/5 py-12 mt-auto">
-          <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <div>
-              <h4 className="text-white font-black mb-4 uppercase text-sm">Navigation</h4>
-              <div className="flex flex-col gap-2 text-slate-500 text-xs font-bold">
-                <Link href="/blog">Blog</Link>
-                <Link href="/deals">Hot Deals</Link>
-                <Link href="/sitemap.xml">Sitemap</Link>
+        {/* ========================================= */}
+        {/* MEGA FOOTER - الفوتر العملاق (تم استعادته) */}
+        {/* ========================================= */}
+        <footer className="bg-[#0B0F19] border-t border-white/5 pt-20 pb-10 mt-auto">
+          <div className="max-w-7xl mx-auto px-4 md:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+              
+              {/* Column 1: Brand */}
+              <div className="space-y-6">
+                <Link href="/" className="text-3xl font-black tracking-tighter">
+                  <span className="text-emerald-500">Rbx</span>Vibe<span className="text-emerald-500">.</span>
+                </Link>
+                <p className="text-slate-400 leading-relaxed font-medium pr-4">
+                  The ultimate destination for gamers. We provide highly accurate tools, real-time codes, and pro-level masterclasses to help you dominate your favorite games.
+                </p>
               </div>
-            </div>
-            <div>
-              <h4 className="text-white font-black mb-4 uppercase text-sm">Mini Games</h4>
-              <div className="flex flex-col gap-2 text-slate-500 text-xs font-bold">
-                <Link href="/ai-game">AI Emoji Game</Link>
-                <Link href="/trivia">Gaming Trivia</Link>
-                <Link href="/reaction-test">Reaction Test</Link>
+
+              {/* Column 2: Pro Tools */}
+              <div>
+                <h4 className="text-white font-black text-lg mb-6 uppercase tracking-widest">Pro Arsenal</h4>
+                <ul className="space-y-4 text-slate-400 font-medium">
+                  <li><Link href="/roblox-codes" className="hover:text-emerald-400 transition-colors">› Roblox Codes</Link></li>
+                  <li><Link href="/fortnite-maps" className="hover:text-cyan-400 transition-colors">› Fortnite XP Maps</Link></li>
+                  <li><Link href="/sensitivity" className="hover:text-purple-400 transition-colors">› Sens Converter</Link></li>
+                  <li><Link href="/blog" className="hover:text-white transition-colors">› Gaming Blog</Link></li>
+                </ul>
               </div>
+
+              {/* Column 3: Mini-Games */}
+              <div>
+                <h4 className="text-white font-black text-lg mb-6 uppercase tracking-widest">Mini Games</h4>
+                <ul className="space-y-4 text-slate-400 font-medium">
+                  <li><Link href="/ai-game" className="hover:text-yellow-400 transition-colors">› AI Emoji Test</Link></li>
+                  <li><Link href="/trivia" className="hover:text-emerald-400 transition-colors">› Gaming Trivia</Link></li>
+                  <li><Link href="/reaction-test" className="hover:text-red-400 transition-colors">› Reaction Test</Link></li>
+                </ul>
+              </div>
+
+              {/* Column 4: Legal & Info (الصفحات القانونية) */}
+              <div>
+                <h4 className="text-white font-black text-lg mb-6 uppercase tracking-widest">Company</h4>
+                <ul className="space-y-4 text-slate-400 font-medium">
+                  <li><Link href="/about" className="hover:text-white transition-colors">› About Us</Link></li>
+                  <li><Link href="/privacy" className="hover:text-white transition-colors">› Privacy Policy</Link></li>
+                  <li><Link href="/terms" className="hover:text-white transition-colors">› Terms of Service</Link></li>
+                  <li><Link href="/contact" className="hover:text-white transition-colors">› Contact Us</Link></li>
+                </ul>
+              </div>
+
             </div>
-            <div className="flex flex-col items-center md:items-end justify-center">
-               <p className="text-slate-500 text-[10px] font-medium uppercase tracking-widest">© 2026 RbxVibe. All rights reserved.</p>
+
+            {/* Bottom Bar */}
+            <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-slate-500 font-medium text-sm">
+              <p>© 2026 RbxVibe. All rights reserved. Built for Gamers.</p>
+              <p className="mt-4 md:mt-0 flex items-center gap-4">
+                <Link href="/sitemap.xml" className="hover:text-white transition-colors">Sitemap</Link>
+              </p>
             </div>
           </div>
         </footer>
