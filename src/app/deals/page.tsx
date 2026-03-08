@@ -3,21 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 
-// قاعدة بيانات العروض بصور مستقرة
+// قاعدة بيانات العروض المحدثة برابط الأفيليت الخاص بك
 const affiliateDeals = [
   {
     id: 1,
     title: "NordVPN - 2 Year Pro Plan",
-    description: "Zero ping, ultimate security. Bypass IP bans and play in any region securely.",
+    description: "Zero ping, ultimate security. Bypass IP bans and play in any region securely. Trusted by pro gamers.",
     oldPrice: "$286.00",
     newPrice: "$83.76",
     discount: "71% OFF",
     image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Services",
-    link: "#", // ضع رابط الأفيليت هنا
-    color: "from-purple-500 to-indigo-500",
-    glow: "shadow-purple-500/20",
-    badge: "High Ticket"
+    link: "https://www.tkqlhce.com/click-101702265-14471514", // تم إضافة رابطك الخاص هنا بنجاح
+    color: "from-blue-600 to-indigo-600",
+    glow: "shadow-blue-500/20",
+    badge: "Best for Gaming"
   },
   {
     id: 2,
@@ -144,7 +144,6 @@ export default function AffiliateDealsPage() {
                   {deal.badge}
                 </span>
               </div>
-              {/* هنا تم استخدام كود الصورة العادي لحل المشكلة */}
               <img 
                 src={deal.image} 
                 alt={deal.title} 
