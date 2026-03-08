@@ -45,11 +45,15 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-[#05070a] text-white flex flex-col min-h-screen`}>
         
-        {/* شريط العرض العلوي المحدث ليشمل Surfshark */}
-        <div className="bg-gradient-to-r from-cyan-600 to-blue-700 py-2.5 text-center text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] fixed top-0 w-full z-[110] border-b border-white/10 shadow-2xl">
-          🚀 Limited Gamer Deal: Get Surfshark VPN with 82% OFF! 
-          <Link href="https://www.jdoqocy.com/click-101702265-17178839" target="_blank" className="ml-3 underline hover:text-white/80 transition-all px-2 py-0.5 rounded border border-white/20 bg-white/10">
-            SECURE YOUR PING NOW →
+        {/* شريط العرض المزدوج الجديد - يحتوي على الاثنين معاً */}
+        <div className="bg-gradient-to-r from-indigo-900 via-blue-700 to-cyan-800 py-2 text-center text-[10px] md:text-xs font-bold uppercase tracking-wider fixed top-0 w-full z-[110] border-b border-white/10 shadow-2xl flex items-center justify-center gap-4">
+          <span className="hidden sm:inline">🎮 GAMER DEALS:</span>
+          <Link href="https://www.tkqlhce.com/click-101702265-14471514" target="_blank" className="bg-white/10 px-2 py-0.5 rounded border border-white/20 hover:bg-blue-500 transition-colors">
+            NORDVPN (71% OFF)
+          </Link>
+          <span className="opacity-30">|</span>
+          <Link href="https://www.jdoqocy.com/click-101702265-17178839" target="_blank" className="bg-white/10 px-2 py-0.5 rounded border border-white/20 hover:bg-cyan-500 transition-colors">
+            SURFSHARK (82% OFF)
           </Link>
         </div>
 
@@ -77,36 +81,8 @@ export default function RootLayout({
         </main>
 
         <footer className="bg-[#0B0F19] border-t border-white/5 py-16 pb-8 mt-auto">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 text-left">
-              <div className="col-span-1 md:col-span-2">
-                <Link href="/" className="text-2xl font-black tracking-tighter mb-6 block">
-                  <span className="text-emerald-500">Rbx</span>Vibe<span className="text-emerald-500">.</span>
-                </Link>
-                <p className="text-slate-400 font-medium leading-relaxed max-w-sm">
-                  The world's leading hub for gamers. Providing elite tools, daily codes, and pro-level gaming insights since 2026.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-white font-black text-lg mb-6 uppercase tracking-widest">Mini Games</h4>
-                <ul className="space-y-4 text-slate-400 font-medium">
-                  <li><Link href="/ai-game" className="hover:text-yellow-400 transition-colors">› AI Emoji Test</Link></li>
-                  <li><Link href="/trivia" className="hover:text-emerald-400 transition-colors">› Gaming Trivia</Link></li>
-                  <li><Link href="/reaction-test" className="hover:text-red-400 transition-colors">› Reaction Test</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-white font-black text-lg mb-6 uppercase tracking-widest">Company</h4>
-                <ul className="space-y-4 text-slate-400 font-medium">
-                  <li><Link href="/privacy" className="hover:text-white transition-colors">› Privacy Policy</Link></li>
-                  <li><Link href="/terms" className="hover:text-white transition-colors">› Terms of Service</Link></li>
-                  <li><Link href="/contact" className="hover:text-white transition-colors">› Contact Us</Link></li>
-                </ul>
-              </div>
-            </div>
-            <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-slate-500 font-medium text-sm">
-              <p>© 2026 RbxVibe. All rights reserved. Built for Gamers.</p>
-            </div>
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <p className="text-slate-500 text-[11px] font-medium uppercase tracking-widest">© 2026 RbxVibe. All rights reserved. Built for Gamers.</p>
           </div>
         </footer>
       </body>
