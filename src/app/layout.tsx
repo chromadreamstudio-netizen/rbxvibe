@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,16 +17,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#05070a] text-white flex flex-col min-h-screen`}>
-        
-        {/* كود جوجل أدسنس المدمج */}
-        <Script
+      <head>
+        {/* كود جوجل أدسنس المدمج في منطقة الرأس لكي يراه روبوت جوجل فوراً */}
+        <meta name="google-adsense-account" content="ca-pub-6313859650856618" />
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6313859650856618"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-
+        ></script>
+      </head>
+      <body className={`${inter.className} bg-[#05070a] text-white flex flex-col min-h-screen`}>
+        
         {/* ========================================= */}
         {/* HEADER - الهيدر الزجاجي الاحترافي */}
         {/* ========================================= */}
@@ -79,7 +79,7 @@ export default function RootLayout({
         </main>
 
         {/* ========================================= */}
-        {/* MEGA FOOTER - الفوتر العملاق الذي تم استرجاعه */}
+        {/* MEGA FOOTER - الفوتر العملاق */}
         {/* ========================================= */}
         <footer className="bg-[#0B0F19] border-t border-white/5 pt-20 pb-10 mt-auto">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
