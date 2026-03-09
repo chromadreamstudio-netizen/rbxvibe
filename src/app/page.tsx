@@ -1,3 +1,4 @@
+import GearUpBanner from '@/components/GearUpBanner';
 import Link from "next/link";
 import Image from "next/image";
 import { articles } from "@/data/articles"; 
@@ -8,7 +9,7 @@ export default function Home() {
       
       {/* 1. HERO SECTION - الانطباع الأول */}
       <section className="relative w-full py-24 md:py-36 flex items-center justify-center overflow-hidden">
-        {/* تأثيرات خلفية نيون (تمت زيادة القوة وتقليل الشفافية لضمان الظهور) */}
+        {/* تأثيرات خلفية نيون */}
         <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-emerald-500/30 blur-3xl rounded-full pointer-events-none"></div>
         <div className="absolute bottom-1/2 right-1/4 w-[400px] h-[400px] bg-purple-500/30 blur-3xl rounded-full pointer-events-none"></div>
         
@@ -37,7 +38,7 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* 2. PRO TOOLS SECTION */}
-        <div className="mb-32">
+        <div className="mb-20"> {/* تقليل الهامش السفلي قليلاً ليتناسب مع البانر */}
           <div className="flex items-end justify-between mb-12 border-b border-white/5 pb-8">
             <div>
               <h2 className="text-4xl font-black text-white mb-2 tracking-tight">The Pro <span className="text-emerald-400">Arsenal</span></h2>
@@ -76,6 +77,11 @@ export default function Home() {
               </div>
             </Link>
           </div>
+        </div>
+
+        {/* 🚀 إعلان GEAR UP BOOSTER (الربح بالعمولة) 🚀 */}
+        <div className="mb-32">
+          <GearUpBanner />
         </div>
 
         {/* 3. GAMES HUB (الألعاب الـ 10 الكاملة) */}
