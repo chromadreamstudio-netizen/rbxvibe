@@ -27,24 +27,66 @@ const affiliateDeals = [
     discount: "82% OFF",
     image: "https://images.pexels.com/photos/5380665/pexels-photo-5380665.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Services",
-    link: "https://www.jdoqocy.com/click-101702265-17178839", // رابط Surfshark الجديد الخاص بك
+    link: "https://www.jdoqocy.com/click-101702265-17178839",
     color: "from-cyan-500 to-blue-500",
     glow: "shadow-cyan-500/20",
     badge: "Unlimited Devices"
   },
   {
     id: 3,
-    title: "GameFly - 1 Month Free Trial",
-    description: "Stop paying full price. Rent the latest PS5 and Xbox games delivered to your door.",
-    oldPrice: "$15.95",
-    newPrice: "$0.00",
-    discount: "100% FREE",
-    image: "https://images.pexels.com/photos/3945659/pexels-photo-3945659.jpeg?auto=compress&cs=tinysrgb&w=800",
+    title: "Hostinger - Premium Web Hosting",
+    description: "Start your own gaming blog, community, or store. Claim an EXTRA 20% discount on secure, fast hosting with a free domain.",
+    oldPrice: "Regular Price",
+    newPrice: "Extra 20% OFF",
+    discount: "Exclusive Deal",
+    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Services",
+    link: "https://www.hostinger.com/tr?REFERRALCODE=137WALIDSDBF", // رابط الإحالة الخاص بك
+    color: "from-purple-600 to-fuchsia-600",
+    glow: "shadow-purple-500/20",
+    badge: "Free Domain Included"
+  },
+  {
+    id: 4,
+    title: "Razer DeathAdder V3 Pro",
+    description: "Ultra-lightweight wireless esports mouse. Dominate your aim training with perfect tracking.",
+    oldPrice: "$149.99",
+    newPrice: "$119.99",
+    discount: "20% OFF",
+    image: "https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg?auto=compress&cs=tinysrgb&w=800",
+    category: "Hardware",
     link: "#",
-    color: "from-blue-500 to-cyan-500",
-    glow: "shadow-cyan-500/20",
-    badge: "Hot Deal"
+    color: "from-emerald-500 to-green-500",
+    glow: "shadow-emerald-500/20",
+    badge: "Pro Gear"
+  },
+  {
+    id: 5,
+    title: "Roblox 10,000 Robux Code",
+    description: "Instant digital delivery. Max out your Blox Fruits account and get limited items.",
+    oldPrice: "$100.00",
+    newPrice: "$89.99",
+    discount: "10% OFF",
+    image: "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=800",
+    category: "Game Keys",
+    link: "#",
+    color: "from-yellow-500 to-orange-500",
+    glow: "shadow-yellow-500/20",
+    badge: "Instant Delivery"
+  },
+  {
+    id: 6,
+    title: "Secretlab TITAN Evo Chair",
+    description: "The ultimate gaming chair. Play for 12 hours straight without back pain.",
+    oldPrice: "$549.00",
+    newPrice: "$499.00",
+    discount: "Save $50",
+    image: "https://images.pexels.com/photos/7862553/pexels-photo-7862553.jpeg?auto=compress&cs=tinysrgb&w=800",
+    category: "Hardware",
+    link: "#",
+    color: "from-slate-400 to-slate-600",
+    glow: "shadow-slate-500/20",
+    badge: "Premium"
   }
 ];
 
