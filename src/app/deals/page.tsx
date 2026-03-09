@@ -2,8 +2,24 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import GearUpBanner from '@/components/GearUpBanner';
 
 const affiliateDeals = [
+  // العرض الجديد: GearUP Booster
+  {
+    id: 7,
+    title: "GearUP Console & PC Booster",
+    description: "Reduce your ping instantly and get a smoother gameplay experience in Roblox. Never disconnect again!",
+    oldPrice: "Regular Price",
+    newPrice: "Premium",
+    discount: "70% OFF",
+    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=800",
+    category: "Services",
+    link: "https://www.kqzyfj.com/click-101583061-17235976",
+    color: "from-red-600 to-rose-600",
+    glow: "shadow-red-500/40",
+    badge: "Hot Deal 🔥"
+  },
   {
     id: 1,
     title: "NordVPN - 2 Year Pro Plan",
@@ -41,7 +57,7 @@ const affiliateDeals = [
     discount: "Exclusive Deal",
     image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Services",
-    link: "https://www.hostinger.com/tr?REFERRALCODE=137WALIDSDBF", // رابط الإحالة الخاص بك
+    link: "https://www.hostinger.com/tr?REFERRALCODE=137WALIDSDBF",
     color: "from-purple-600 to-fuchsia-600",
     glow: "shadow-purple-500/20",
     badge: "Free Domain Included"
@@ -107,6 +123,11 @@ export default function AffiliateDealsPage() {
         </div>
         <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">Pro Gaming <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-orange-500">Loot</span></h1>
         <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">Exclusive affiliate offers curated for the RbxVibe community.</p>
+      </div>
+
+      {/* 🚀 إضافة البانر الإعلاني هنا في أعلى صفحة العروض 🚀 */}
+      <div className="mb-12">
+        <GearUpBanner />
       </div>
 
       <div className="flex flex-wrap justify-center gap-4 mb-16">
