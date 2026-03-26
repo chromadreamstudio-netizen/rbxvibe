@@ -38,7 +38,7 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* 2. PRO TOOLS SECTION */}
-        <div className="mb-20"> {/* تقليل الهامش السفلي قليلاً ليتناسب مع البانر */}
+        <div className="mb-20"> 
           <div className="flex items-end justify-between mb-12 border-b border-white/5 pb-8">
             <div>
               <h2 className="text-4xl font-black text-white mb-2 tracking-tight">The Pro <span className="text-emerald-400">Arsenal</span></h2>
@@ -112,7 +112,46 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 4. LATEST ARTICLES */}
+        {/* 🚀 4. WIKI & DATABASE (القسم الجديد المغناطيس لـ AdSense) 🚀 */}
+        <div className="mb-32">
+          <div className="flex items-end justify-between mb-12 border-b border-white/5 pb-8">
+            <div>
+              <h2 className="text-4xl font-black text-white mb-2 tracking-tight">Official <span className="text-cyan-400">Database</span></h2>
+              <p className="text-slate-500 text-lg font-medium">Deep-dive stats, tier lists, and complete guides for your favorite games.</p>
+            </div>
+            <Link href="/wiki" className="text-white font-bold hover:text-cyan-400 transition-colors uppercase text-sm tracking-widest">
+              Open Wiki &rarr;
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Link href="/wiki" className="group p-8 rounded-[2.5rem] bg-gradient-to-br from-[#0B0F19] to-black border border-white/5 hover:border-cyan-500/50 transition-all duration-500 shadow-2xl relative overflow-hidden flex items-center justify-between">
+              <div className="z-10">
+                <span className="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 font-black text-xs uppercase tracking-widest mb-4 inline-block border border-cyan-500/30">Updated</span>
+                <h3 className="text-3xl font-black text-white mb-2">Blox Fruits Wiki</h3>
+                <p className="text-slate-400 font-medium max-w-sm">Every fruit, sword, and fighting style explained with exact damage stats and combos.</p>
+              </div>
+              <div className="text-6xl md:text-8xl group-hover:scale-110 group-hover:rotate-12 transition-transform z-10 opacity-80">
+                🦊
+              </div>
+              <div className="absolute -right-10 -top-10 w-40 h-40 bg-cyan-500/10 blur-[50px] rounded-full"></div>
+            </Link>
+
+            <Link href="/wiki" className="group p-8 rounded-[2.5rem] bg-gradient-to-br from-[#0B0F19] to-black border border-white/5 hover:border-blue-500/50 transition-all duration-500 shadow-2xl relative overflow-hidden flex items-center justify-between">
+               <div className="z-10">
+                <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 font-black text-xs uppercase tracking-widest mb-4 inline-block border border-blue-500/30">Trending</span>
+                <h3 className="text-3xl font-black text-white mb-2">Weapon Tier List</h3>
+                <p className="text-slate-400 font-medium max-w-sm">Find out which mythical weapons are dominating the current PvP meta.</p>
+              </div>
+              <div className="text-6xl md:text-8xl group-hover:scale-110 group-hover:-rotate-12 transition-transform z-10 opacity-80">
+                ⚔️
+              </div>
+              <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-500/10 blur-[50px] rounded-full"></div>
+            </Link>
+          </div>
+        </div>
+
+        {/* 5. LATEST ARTICLES */}
         <div className="mb-32">
           <div className="flex items-end justify-between mb-12 border-b border-white/5 pb-8">
             <div>
@@ -140,7 +179,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 5. TESTIMONIALS SECTION */}
+        {/* 6. TESTIMONIALS SECTION */}
         <div className="mb-32">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-white mb-4 tracking-tight">Loved by the <span className="text-purple-400">Community</span></h2>
@@ -183,7 +222,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 6. FAQ SECTION */}
+        {/* 7. FAQ SECTION */}
         <div className="mb-24 max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-black text-white mb-4 tracking-tight">Frequently Asked <span className="text-emerald-400">Questions</span></h2>

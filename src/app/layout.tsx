@@ -68,6 +68,12 @@ export default function RootLayout({
             {/* Navigation */}
             <nav className="hidden lg:flex items-center gap-5 text-[10px] font-bold uppercase tracking-widest text-slate-400">
               <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+              
+              {/* 🚀 رابط الموسوعة الجديد (تمت إضافته هنا) 🚀 */}
+              <Link href="/wiki" className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 font-black">
+                WIKI <span className="text-[12px]">📚</span>
+              </Link>
+
               <Link href="/roblox-codes" className="hover:text-emerald-400 transition-colors">Roblox</Link>
               <Link href="/fortnite-maps" className="hover:text-cyan-400 transition-colors">Fortnite</Link>
               <Link href="/sensitivity" className="hover:text-purple-400 transition-colors">Sensitivity</Link>
@@ -100,7 +106,7 @@ export default function RootLayout({
         </main>
 
         {/* ========================================= */}
-        {/* MEGA FOOTER - الفوتر العملاق (تم استعادته) */}
+        {/* MEGA FOOTER */}
         {/* ========================================= */}
         <footer className="bg-[#0B0F19] border-t border-white/5 pt-20 pb-10 mt-auto">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -120,6 +126,8 @@ export default function RootLayout({
               <div>
                 <h4 className="text-white font-black text-lg mb-6 uppercase tracking-widest">Pro Arsenal</h4>
                 <ul className="space-y-4 text-slate-400 font-medium">
+                  {/* 🚀 رابط الموسوعة في الفوتر للـ SEO 🚀 */}
+                  <li><Link href="/wiki" className="text-cyan-400 hover:text-cyan-300 transition-colors font-bold">› Official Wiki 📚</Link></li>
                   <li><Link href="/roblox-codes" className="hover:text-emerald-400 transition-colors">› Roblox Codes</Link></li>
                   <li><Link href="/fortnite-maps" className="hover:text-cyan-400 transition-colors">› Fortnite XP Maps</Link></li>
                   <li><Link href="/sensitivity" className="hover:text-purple-400 transition-colors">› Sens Converter</Link></li>
@@ -137,7 +145,7 @@ export default function RootLayout({
                 </ul>
               </div>
 
-              {/* Column 4: Legal & Info (الصفحات القانونية) */}
+              {/* Column 4: Legal & Info */}
               <div>
                 <h4 className="text-white font-black text-lg mb-6 uppercase tracking-widest">Company</h4>
                 <ul className="space-y-4 text-slate-400 font-medium">
