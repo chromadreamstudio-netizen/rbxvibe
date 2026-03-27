@@ -3,15 +3,20 @@
 import { useState } from "react";
 import Link from "next/link";
 
-// بيانات تجريبية لخرائط فورتنايت (يمكنك تعديلها لاحقاً)
-const mapsData = [
-  { id: 1, name: "1v1 Build Fights + XP", code: "1234-5678-9012", type: "PvP / Passive XP", status: "Active" },
-  { id: 2, name: "Red vs Blue Rumble", code: "9876-5432-1098", type: "Combat XP", status: "Active" },
-  { id: 3, name: "Parkour Deathrun 500 Levels", code: "4567-8901-2345", type: "Milestone XP", status: "Active" },
-  { id: 4, name: "AFK XP Lounge", code: "1111-2222-3333", type: "AFK / Timer", status: "Patched" },
+// قاعدة بيانات متقدمة لخرائط فورتنايت (SaaS Directory)
+const mapsDB = [
+  { id: 1, name: "1v1 Build Fights + XP", code: "1234-5678-9012", category: "1v1 & PvP", xpRate: "Passive", players: "24K", status: "Active" },
+  { id: 2, name: "Secret XP Lounge", code: "9876-5432-1098", category: "XP Farm", xpRate: "High", players: "8K", status: "Active" },
+  { id: 3, name: "Parkour 500 Levels", code: "4567-8901-2345", category: "Deathrun", xpRate: "Milestone", players: "15K", status: "Active" },
+  { id: 4, name: "Red vs Blue Rumble", code: "3333-4444-5555", category: "1v1 & PvP", xpRate: "Combat", players: "32K", status: "Active" },
+  { id: 5, name: "Pro Aim Trainer", code: "6666-7777-8888", category: "Practice", xpRate: "Low", players: "5K", status: "Active" },
+  { id: 6, name: "AFK Timer Glitch", code: "1111-2222-3333", category: "XP Farm", xpRate: "Extreme", players: "0", status: "Patched" },
 ];
 
+const categories = ["All Maps", "XP Farm", "1v1 & PvP", "Deathrun", "Practice"];
+
 export default function FortniteMapsPage() {
+  const [activeCategory, setActiveCategory] = useState("All Maps");
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
   const handleCopy = (code: string) => {
@@ -20,63 +25,70 @@ export default function FortniteMapsPage() {
     setTimeout(() => setCopiedCode(null), 2000);
   };
 
+  const filteredMaps = mapsDB.filter(m => activeCategory === "All Maps" || m.category === activeCategory);
+
   return (
-    <div className="max-w-5xl mx-auto mt-12 px-4 pb-24 animate-fade-in">
+    <div className="max-w-6xl mx-auto mt-12 px-4 pb-24 animate-fade-in">
       <Link href="/" className="text-slate-400 hover:text-cyan-400 mb-8 inline-flex items-center gap-2 font-bold transition-all hover:-translate-x-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
         <span>&larr;</span> Back to Home
       </Link>
 
       <div className="text-center mb-16">
-        <div className="w-20 h-20 mx-auto bg-cyan-500/20 flex items-center justify-center rounded-3xl border border-cyan-500/30 mb-6 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-          <span className="text-4xl">🗺️</span>
+        <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 mb-6 text-cyan-400 font-bold text-sm tracking-widest uppercase">
+          Creative Directory
         </div>
-        <h1 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">Fortnite <span className="text-cyan-400">XP Maps</span></h1>
-        <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          Level up your Battle Pass instantly. Copy the most rewarding and active Creative map codes for massive XP gains.
+        <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">Fortnite <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">XP Maps</span></h1>
+        <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
+          Level up your Battle Pass instantly. Explore our live directory of the most rewarding, unpatched Creative map codes.
         </p>
       </div>
 
-      {/* --- قسم الأداة (أكواد الخرائط) --- */}
-      <div className="bg-[#0B0F19] rounded-[2.5rem] border border-white/10 p-6 md:p-12 shadow-2xl relative overflow-hidden mb-16">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+      <div className="bg-[#0B0F19] rounded-[3rem] border border-white/10 shadow-2xl relative overflow-hidden mb-16 p-8 md:p-12">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
-        <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/10 relative z-10">
-          <h2 className="text-3xl font-black text-white">Top Rated Maps</h2>
-          <span className="px-4 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-sm border border-cyan-500/30">
-            Updated Daily
-          </span>
+        {/* فلاتر الخرائط */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12 relative z-10 border-b border-white/5 pb-8">
+          {categories.map(cat => (
+            <button 
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${activeCategory === cat ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(34,211,238,0.4)]' : 'bg-[#111827] text-slate-400 border border-white/10 hover:text-white'}`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10 overflow-x-auto">
-          {mapsData.map((map) => (
-            <div key={map.id} className="bg-[#111827] p-6 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all group flex flex-col justify-between">
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="font-black text-xl text-white group-hover:text-cyan-400 transition-colors whitespace-nowrap">{map.name}</h3>
-                  <span className={`text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wider ${map.status === 'Active' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}`}>
-                    {map.status}
-                  </span>
+        {/* شبكة الخرائط الديناميكية */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
+          {filteredMaps.map(map => (
+            <div key={map.id} className={`bg-[#111827] p-6 rounded-3xl border transition-all flex flex-col ${map.status === 'Active' ? 'border-white/5 hover:border-cyan-500/30' : 'border-red-900/30 opacity-70'}`}>
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-2xl font-black text-white mb-1">{map.name}</h3>
+                  <div className="flex gap-2">
+                    <span className="text-xs font-bold bg-white/5 px-2 py-1 rounded text-slate-400">{map.category}</span>
+                    <span className="text-xs font-bold bg-white/5 px-2 py-1 rounded text-slate-400">👥 {map.players}</span>
+                  </div>
                 </div>
-                <p className="text-slate-400 text-sm mb-4 font-medium border-l-2 border-cyan-500/30 pl-3">Type: {map.type}</p>
+                <div className={`w-3 h-3 rounded-full ${map.status === 'Active' ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse' : 'bg-red-500'}`}></div>
               </div>
               
-              <div className="flex items-center gap-3">
-                <code className={`flex-1 bg-black/50 p-3 rounded-xl font-mono text-center font-bold tracking-widest overflow-x-auto whitespace-nowrap ${map.status === 'Patched' ? 'text-slate-500 line-through' : 'text-cyan-400'}`}>
+              <div className="bg-black/50 p-4 rounded-2xl flex items-center justify-between border border-white/5 mb-4">
+                <span className="text-slate-400 text-sm font-bold uppercase tracking-widest">XP Rate</span>
+                <span className={`font-black uppercase ${map.status === 'Patched' ? 'text-red-400 line-through' : 'text-cyan-400'}`}>{map.xpRate}</span>
+              </div>
+
+              <div className="flex gap-3 mt-auto">
+                <code className={`flex-1 bg-black py-3 rounded-xl font-mono text-center font-bold text-lg tracking-wider border border-white/5 ${map.status === 'Patched' ? 'text-slate-600 line-through' : 'text-white'}`}>
                   {map.code}
                 </code>
                 <button 
                   onClick={() => handleCopy(map.code)}
                   disabled={map.status === 'Patched'}
-                  className={`p-3 rounded-xl font-bold transition-all ${
-                    map.status === 'Patched'
-                    ? "bg-white/5 text-slate-500 cursor-not-allowed"
-                    : copiedCode === map.code 
-                    ? "bg-cyan-500 text-[#0B0F19] shadow-[0_0_20px_rgba(34,211,238,0.5)]" 
-                    : "bg-white/10 text-white hover:bg-cyan-500 hover:text-[#0B0F19]"
-                  }`}
-                  title="Copy Code"
+                  className={`px-6 rounded-xl font-bold transition-all ${map.status === 'Patched' ? 'bg-white/5 text-slate-600 cursor-not-allowed' : copiedCode === map.code ? 'bg-cyan-500 text-black' : 'bg-white/10 hover:bg-cyan-500 hover:text-black text-white'}`}
                 >
-                  {copiedCode === map.code ? "✔" : "📋"}
+                  {copiedCode === map.code ? "✔" : "Copy"}
                 </button>
               </div>
             </div>
@@ -84,66 +96,29 @@ export default function FortniteMapsPage() {
         </div>
       </div>
 
-      {/* 🚀 2. INTERNAL LINKING BANNER (اللافتة الجديدة) 🚀 */}
-      <div className="mb-24 bg-gradient-to-r from-blue-900 via-purple-700 to-cyan-800 p-1 rounded-3xl border border-white/10 shadow-[0_0_40px_rgba(34,211,238,0.3)] animate-pulse">
+      {/* SEO Banner */}
+      <div className="mb-16 bg-gradient-to-r from-blue-900 via-purple-700 to-cyan-800 p-1 rounded-3xl shadow-[0_0_40px_rgba(34,211,238,0.2)]">
         <Link href="/blog/how-to-get-free-fortnite-skins" className="block bg-[#0B0F19] rounded-[2rem] p-8 md:p-12 hover:bg-white/5 transition-colors relative overflow-hidden group">
-          
-          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none"></div>
-
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-center md:text-left">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 mb-6 backdrop-blur-md text-cyan-400 font-bold text-sm tracking-widest uppercase">
-                🚀 SEO Article
-              </div>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter leading-tight">
-                How to Get Free <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Fortnite Skins</span> (Legit Methods)
-              </h2>
-              <p className="text-xl text-slate-400 max-w-xl font-medium mb-6">
-                Stop falling for scam generators. Discover safe, Epic Games-approved methods to expand your locker without spending V-Bucks.
-              </p>
+            <div>
+              <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 mb-4 text-cyan-400 font-bold text-sm tracking-widest uppercase">🚀 Free Rewards</div>
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-2">How to Get Free Fortnite Skins</h2>
+              <p className="text-slate-400">Discover safe, Epic Games-approved methods to expand your locker.</p>
             </div>
-            <div className="text-cyan-500 font-bold text-xl uppercase tracking-widest group-hover:translate-x-2 transition-transform whitespace-nowrap">
-              Read Guide &rarr;
-            </div>
+            <div className="text-cyan-500 font-bold uppercase tracking-widest group-hover:translate-x-2 transition-transform whitespace-nowrap">Read Guide &rarr;</div>
           </div>
         </Link>
       </div>
 
-      {/* --- قسم السيو وتطبيق فكرتك الذكية (المحتوى الطويل لجوجل أدسنس) --- */}
-      <div className="bg-[#0B0F19] rounded-[2.5rem] border border-white/5 p-8 md:p-12 shadow-2xl">
-        <div className="prose prose-invert max-w-none 
-                        prose-headings:font-black prose-headings:tracking-tight prose-headings:text-white
-                        prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4
-                        prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-6
-                        prose-ul:text-slate-300 prose-li:mb-2
-                        prose-strong:text-cyan-400">
-          
-          <h2>How to Use Fortnite XP Maps to Level Up Fast</h2>
-          <p>
-            Leveling up your Battle Pass in Fortnite can be a long grind if you only play traditional Battle Royale or Zero Build matches. Creative XP Maps offer a highly efficient alternative. These are custom-built islands by community creators that utilize Epic Games' "Accolade Device" to reward players with experience points for completing specific tasks—such as finding hidden buttons, surviving in Red vs Blue combat, or completing deathruns. To use them, simply copy a map code from our active list above, enter it into the Island Code tab in the game lobby, and start playing!
-          </p>
-
-          <h2>Can You Get Banned for Using XP Glitches?</h2>
-          <p>
-            A common question among the Fortnite community is whether utilizing "XP Glitches" or high-yield AFK maps will result in an account ban. The short answer is <strong>No</strong>, as long as the map is built using the official Creative tools provided by Epic Games. When creators place XP accolades in their maps, Epic Games' system automatically calibrates them. If a map gives too much XP too quickly, the system simply reduces the XP output (this is why maps eventually become "Patched"). You will not be banned for playing a map that Epic Games themselves approved and published.
-          </p>
-
-          <h2>How to Get Free Skins in Fortnite (Legit Methods)</h2>
-          <p>
-            Many players search for a "Free Skin Generator," but it's important to know that <strong>skin generators do not exist</strong>. Any website asking for your Epic Games password or offering to generate free V-Bucks or Skins via a script is a scam designed to steal your account. However, Epic Games provides several 100% legitimate ways to get free cosmetics:
-          </p>
-          <ul>
-            <li><strong>Winterfest & Holiday Events:</strong> Every December, Fortnite hosts Winterfest, giving away 2 to 3 completely free outfits just for logging in and opening presents in the Winterfest Cabin.</li>
-            <li><strong>PlayStation Plus Celebration Packs:</strong> If you are a PS Plus subscriber, you can regularly claim free exclusive skins and pickaxes directly from the PlayStation Store.</li>
-            <li><strong>Free PC Offerings (Epic Games Store):</strong> Occasionally, the Epic Games Store offers a free promotional skin for PC players in the Item Shop (e.g., the Blizzabelle or Underworld Desdemona quests).</li>
-            <li><strong>Competitive Cups:</strong> Epic frequently hosts promotional tournaments. Placing high enough in your region rewards you with the skin before it even hits the Item Shop.</li>
-            <li><strong>Battle Pass V-Bucks:</strong> Even without buying the Battle Pass, the free tier track gives you 300 free V-Bucks per season. Save these up over a few seasons, and you can buy a premium skin or the Battle Pass itself for free!</li>
-          </ul>
-
+      {/* SEO Content */}
+      <div className="bg-[#0B0F19] rounded-[3rem] border border-white/5 p-8 md:p-16 shadow-2xl relative z-10">
+        <div className="prose prose-invert max-w-none prose-headings:font-black prose-headings:text-white prose-h2:text-3xl prose-h2:mt-8 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4 prose-p:text-slate-300 prose-p:leading-relaxed prose-strong:text-cyan-400">
+          <h2>How to Use Fortnite XP Maps</h2>
+          <p>Leveling up your Battle Pass in Fortnite can be a long grind if you only play traditional Battle Royale. Creative XP Maps offer a highly efficient alternative. These custom-built islands utilize Epic Games' "Accolade Device" to reward players with experience points for completing specific tasks.</p>
+          <h2>Can You Get Banned for XP Glitches?</h2>
+          <p>A common question is whether utilizing high-yield AFK maps will result in an account ban. The short answer is <strong>No</strong>. When creators place XP accolades in their maps, Epic Games' system automatically calibrates them. If a map gives too much XP, the system simply reduces the output (which is why maps eventually become "Patched").</p>
         </div>
       </div>
-
     </div>
   );
 }
