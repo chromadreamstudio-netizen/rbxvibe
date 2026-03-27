@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function CrosshairGeneratorPage() {
-  // إعدادات الـ Crosshair
   const [color, setColor] = useState("#00FF00");
   const [length, setLength] = useState(6);
   const [thickness, setThickness] = useState(2);
@@ -12,9 +11,8 @@ export default function CrosshairGeneratorPage() {
   const [hasDot, setHasDot] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // توليد كود وهمي يشبه أكواد Valorant لنسخه
   const generateCode = () => {
-    const code = \`0;P;c;1;h;0;0l;\${length};0v;\${length};0g;\${gap};0a;1;0f;0;1b;0;dot;\${hasDot ? 1 : 0}\`;
+    const code = `0;P;c;1;h;0;0l;${length};0v;${length};0g;${gap};0a;1;0f;0;1b;0;dot;${hasDot ? 1 : 0}`;
     navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -38,17 +36,14 @@ export default function CrosshairGeneratorPage() {
         </p>
       </div>
 
-      {/* --- الأداة التفاعلية --- */}
       <div className="bg-[#0B0F19] rounded-[3rem] border border-white/10 p-6 md:p-12 shadow-2xl mb-16 relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
           
-          {/* الجانب الأيسر (لوحة التحكم - Settings) */}
           <div className="space-y-8 bg-black/40 p-8 rounded-3xl border border-white/5">
             <h2 className="text-2xl font-black text-white flex items-center gap-3">
               <span className="text-rose-500">⚙️</span> Reticle Settings
             </h2>
 
-            {/* الألوان */}
             <div>
               <label className="block text-slate-400 font-bold mb-3 uppercase tracking-widest text-xs">Primary Color</label>
               <div className="flex gap-3">
@@ -56,14 +51,13 @@ export default function CrosshairGeneratorPage() {
                   <button
                     key={c}
                     onClick={() => setColor(c)}
-                    className={\`w-10 h-10 rounded-full border-2 transition-all \${color === c ? 'scale-125 shadow-[0_0_15px_rgba(255,255,255,0.5)] border-white' : 'border-transparent hover:scale-110'}\`}
+                    className={`w-10 h-10 rounded-full border-2 transition-all ${color === c ? 'scale-125 shadow-[0_0_15px_rgba(255,255,255,0.5)] border-white' : 'border-transparent hover:scale-110'}`}
                     style={{ backgroundColor: c }}
                   />
                 ))}
               </div>
             </div>
 
-            {/* الفراغ الداخلي (Gap) */}
             <div>
               <div className="flex justify-between mb-2">
                 <label className="text-slate-400 font-bold uppercase tracking-widest text-xs">Inner Lines Offset (Gap)</label>
@@ -72,7 +66,6 @@ export default function CrosshairGeneratorPage() {
               <input type="range" min="0" max="20" value={gap} onChange={(e) => setGap(Number(e.target.value))} className="w-full accent-rose-500" />
             </div>
 
-            {/* الطول (Length) */}
             <div>
               <div className="flex justify-between mb-2">
                 <label className="text-slate-400 font-bold uppercase tracking-widest text-xs">Line Length</label>
@@ -81,7 +74,6 @@ export default function CrosshairGeneratorPage() {
               <input type="range" min="2" max="30" value={length} onChange={(e) => setLength(Number(e.target.value))} className="w-full accent-rose-500" />
             </div>
 
-            {/* السماكة (Thickness) */}
             <div>
               <div className="flex justify-between mb-2">
                 <label className="text-slate-400 font-bold uppercase tracking-widest text-xs">Line Thickness</label>
@@ -90,14 +82,13 @@ export default function CrosshairGeneratorPage() {
               <input type="range" min="1" max="10" value={thickness} onChange={(e) => setThickness(Number(e.target.value))} className="w-full accent-rose-500" />
             </div>
 
-            {/* نقطة المنتصف (Center Dot) */}
             <div className="flex items-center justify-between bg-white/5 p-4 rounded-xl border border-white/5">
               <label className="text-slate-300 font-bold">Center Dot</label>
               <button 
                 onClick={() => setHasDot(!hasDot)}
-                className={\`w-14 h-8 rounded-full transition-colors relative \${hasDot ? 'bg-rose-500' : 'bg-slate-700'}\`}
+                className={`w-14 h-8 rounded-full transition-colors relative ${hasDot ? 'bg-rose-500' : 'bg-slate-700'}`}
               >
-                <div className={\`w-6 h-6 bg-white rounded-full absolute top-1 transition-all \${hasDot ? 'left-7' : 'left-1'}\`}></div>
+                <div className={`w-6 h-6 bg-white rounded-full absolute top-1 transition-all ${hasDot ? 'left-7' : 'left-1'}`}></div>
               </button>
             </div>
 
@@ -109,47 +100,39 @@ export default function CrosshairGeneratorPage() {
             </button>
           </div>
 
-          {/* الجانب الأيمن (شاشة العرض الحية - Preview) */}
           <div className="relative rounded-3xl overflow-hidden border-2 border-slate-800 shadow-2xl flex items-center justify-center bg-zinc-900 h-[500px]">
-            {/* خلفية اللعبة الوهمية */}
             <img 
               src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop" 
               alt="Game Background" 
               className="absolute inset-0 w-full h-full object-cover opacity-40 blur-[2px]"
             />
             
-            {/* عنصر الـ Crosshair المبرمج */}
             <div className="relative z-10">
-              {/* النقطة المركزية */}
               {hasDot && (
                 <div 
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                  style={{ width: \`\${thickness}px\`, height: \`\${thickness}px\`, backgroundColor: color }}
+                  style={{ width: `${thickness}px`, height: `${thickness}px`, backgroundColor: color }}
                 ></div>
               )}
               
-              {/* الخط العلوي */}
               <div 
                 className="absolute left-1/2 -translate-x-1/2"
-                style={{ bottom: \`\${gap + (hasDot ? thickness : 0)}px\`, width: \`\${thickness}px\`, height: \`\${length}px\`, backgroundColor: color }}
+                style={{ bottom: `${gap + (hasDot ? thickness : 0)}px`, width: `${thickness}px`, height: `${length}px`, backgroundColor: color }}
               ></div>
               
-              {/* الخط السفلي */}
               <div 
                 className="absolute left-1/2 -translate-x-1/2"
-                style={{ top: \`\${gap + (hasDot ? thickness : 0)}px\`, width: \`\${thickness}px\`, height: \`\${length}px\`, backgroundColor: color }}
+                style={{ top: `${gap + (hasDot ? thickness : 0)}px`, width: `${thickness}px`, height: `${length}px`, backgroundColor: color }}
               ></div>
               
-              {/* الخط الأيسر */}
               <div 
                 className="absolute top-1/2 -translate-y-1/2"
-                style={{ right: \`\${gap + (hasDot ? thickness : 0)}px\`, height: \`\${thickness}px\`, width: \`\${length}px\`, backgroundColor: color }}
+                style={{ right: `${gap + (hasDot ? thickness : 0)}px`, height: `${thickness}px`, width: `${length}px`, backgroundColor: color }}
               ></div>
               
-              {/* الخط الأيمن */}
               <div 
                 className="absolute top-1/2 -translate-y-1/2"
-                style={{ left: \`\${gap + (hasDot ? thickness : 0)}px\`, height: \`\${thickness}px\`, width: \`\${length}px\`, backgroundColor: color }}
+                style={{ left: `${gap + (hasDot ? thickness : 0)}px`, height: `${thickness}px`, width: `${length}px`, backgroundColor: color }}
               ></div>
             </div>
 
@@ -160,7 +143,6 @@ export default function CrosshairGeneratorPage() {
         </div>
       </div>
 
-      {/* --- قسم السيو (SEO Masterclass لجوجل أدسنس) --- */}
       <div className="bg-[#0B0F19] rounded-[3rem] border border-white/5 p-8 md:p-16 shadow-2xl relative z-10">
         <div className="prose prose-invert max-w-none 
                         prose-headings:font-black prose-headings:tracking-tight prose-headings:text-white
@@ -200,7 +182,6 @@ export default function CrosshairGeneratorPage() {
           </p>
         </div>
       </div>
-
     </div>
   );
 }
