@@ -3,24 +3,63 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const fruitsData = [
-  { id: 1, name: "Kitsune", value: 115000000, icon: "🦊", color: "text-blue-400" },
-  { id: 2, name: "Dragon", value: 90000000, icon: "🐉", color: "text-orange-400" },
-  { id: 3, name: "Leopard", value: 40000000, icon: "🐆", color: "text-yellow-400" },
-  { id: 4, name: "Dough", value: 25000000, icon: "🍩", color: "text-yellow-200" },
-  { id: 5, name: "T-Rex", value: 20000000, icon: "🦖", color: "text-red-400" },
-  { id: 6, name: "Venom", value: 9000000, icon: "☠️", color: "text-purple-400" },
-  { id: 7, name: "Buddha", value: 7000000, icon: "🟨", color: "text-yellow-300" },
-  { id: 8, name: "Portal", value: 6000000, icon: "🌀", color: "text-cyan-400" },
+// قاعدة البيانات الكاملة لجميع فواكه Blox Fruits والـ Gamepasses بقيم التداول الحقيقية
+const itemsData = [
+  // --- Gamepasses ---
+  { id: 101, name: "Fruit Notifier", value: 250000000, icon: "🧭", color: "text-rose-400", type: "gamepass" },
+  { id: 102, name: "Dark Blade", value: 130000000, icon: "🗡️", color: "text-emerald-400", type: "gamepass" },
+  { id: 103, name: "2x Mastery", value: 45000000, icon: "⚔️", color: "text-purple-400", type: "gamepass" },
+  { id: 104, name: "2x Money", value: 45000000, icon: "💰", color: "text-yellow-400", type: "gamepass" },
+  { id: 105, name: "+1 Storage", value: 45000000, icon: "📦", color: "text-orange-400", type: "gamepass" },
+  { id: 106, name: "2x Boss Drops", value: 30000000, icon: "👹", color: "text-red-500", type: "gamepass" },
+  { id: 107, name: "Fast Boats", value: 30000000, icon: "🚤", color: "text-blue-400", type: "gamepass" },
+
+  // --- Fruits ---
+  { id: 1, name: "Kitsune", value: 115000000, icon: "🦊", color: "text-blue-400", type: "fruit" },
+  { id: 2, name: "Dragon", value: 90000000, icon: "🐉", color: "text-orange-400", type: "fruit" },
+  { id: 3, name: "Leopard", value: 40000000, icon: "🐆", color: "text-yellow-400", type: "fruit" },
+  { id: 4, name: "Dough", value: 25000000, icon: "🍩", color: "text-yellow-200", type: "fruit" },
+  { id: 5, name: "T-Rex", value: 20000000, icon: "🦖", color: "text-red-400", type: "fruit" },
+  { id: 6, name: "Mammoth", value: 12500000, icon: "🦣", color: "text-amber-600", type: "fruit" },
+  { id: 7, name: "Spirit", value: 10000000, icon: "👻", color: "text-indigo-400", type: "fruit" },
+  { id: 8, name: "Venom", value: 9000000, icon: "☣️", color: "text-purple-500", type: "fruit" },
+  { id: 9, name: "Control", value: 8000000, icon: "🎛️", color: "text-blue-300", type: "fruit" },
+  { id: 10, name: "Buddha", value: 7000000, icon: "🟨", color: "text-yellow-300", type: "fruit" },
+  { id: 11, name: "Portal", value: 6000000, icon: "🌀", color: "text-cyan-400", type: "fruit" },
+  { id: 12, name: "Shadow", value: 6000000, icon: "🌑", color: "text-slate-500", type: "fruit" },
+  { id: 13, name: "Rumble", value: 5000000, icon: "⚡", color: "text-blue-400", type: "fruit" },
+  { id: 14, name: "Blizzard", value: 4000000, icon: "❄️", color: "text-sky-200", type: "fruit" },
+  { id: 15, name: "Sound", value: 3000000, icon: "🎵", color: "text-pink-400", type: "fruit" },
+  { id: 16, name: "Pain", value: 2000000, icon: "🐾", color: "text-red-300", type: "fruit" },
+  { id: 17, name: "Gravity", value: 2000000, icon: "🌌", color: "text-purple-300", type: "fruit" },
+  { id: 18, name: "Phoenix", value: 1500000, icon: "🐦", color: "text-orange-300", type: "fruit" },
+  { id: 19, name: "Spider", value: 1200000, icon: "🕸️", color: "text-slate-300", type: "fruit" },
+  { id: 20, name: "Love", value: 1200000, icon: "💖", color: "text-pink-300", type: "fruit" },
+  { id: 21, name: "Magma", value: 1000000, icon: "🌋", color: "text-red-500", type: "fruit" },
+  { id: 22, name: "Quake", value: 1000000, icon: "📳", color: "text-blue-200", type: "fruit" },
+  { id: 23, name: "Ghost", value: 800000, icon: "👻", color: "text-slate-400", type: "fruit" },
+  { id: 24, name: "Light", value: 800000, icon: "✨", color: "text-yellow-100", type: "fruit" },
+  { id: 25, name: "Dark", value: 500000, icon: "🌌", color: "text-purple-600", type: "fruit" },
+  { id: 26, name: "Ice", value: 400000, icon: "🧊", color: "text-cyan-200", type: "fruit" },
+  { id: 27, name: "Flame", value: 300000, icon: "🔥", color: "text-orange-500", type: "fruit" },
+  { id: 28, name: "Rubber", value: 300000, icon: "👒", color: "text-yellow-500", type: "fruit" },
+  { id: 29, name: "Barrier", value: 100000, icon: "🛡️", color: "text-emerald-300", type: "fruit" },
+  { id: 30, name: "Rocket", value: 50000, icon: "🚀", color: "text-slate-400", type: "fruit" },
+  { id: 31, name: "Spin", value: 50000, icon: "🚁", color: "text-slate-400", type: "fruit" },
+  { id: 32, name: "Chop", value: 50000, icon: "🪓", color: "text-slate-400", type: "fruit" },
+  { id: 33, name: "Spring", value: 50000, icon: "〰️", color: "text-slate-400", type: "fruit" },
+  { id: 34, name: "Bomb", value: 50000, icon: "💣", color: "text-slate-400", type: "fruit" },
+  { id: 35, name: "Smoke", value: 50000, icon: "💨", color: "text-slate-400", type: "fruit" },
+  { id: 36, name: "Spike", value: 50000, icon: "🗡️", color: "text-slate-400", type: "fruit" }
 ];
 
 export default function TradeCalculatorPage() {
   const [myOffer, setMyOffer] = useState<any[]>([]);
   const [theirOffer, setTheirOffer] = useState<any[]>([]);
 
-  const addToOffer = (fruit: any, side: 'mine' | 'theirs') => {
-    if (side === 'mine' && myOffer.length < 4) setMyOffer([...myOffer, fruit]);
-    if (side === 'theirs' && theirOffer.length < 4) setTheirOffer([...theirOffer, fruit]);
+  const addToOffer = (item: any, side: 'mine' | 'theirs') => {
+    if (side === 'mine' && myOffer.length < 4) setMyOffer([...myOffer, item]);
+    if (side === 'theirs' && theirOffer.length < 4) setTheirOffer([...theirOffer, item]);
   };
 
   const removeFromOffer = (index: number, side: 'mine' | 'theirs') => {
@@ -28,14 +67,14 @@ export default function TradeCalculatorPage() {
     if (side === 'theirs') setTheirOffer(theirOffer.filter((_, i) => i !== index));
   };
 
-  const myTotal = myOffer.reduce((sum, fruit) => sum + fruit.value, 0);
-  const theirTotal = theirOffer.reduce((sum, fruit) => sum + fruit.value, 0);
+  const myTotal = myOffer.reduce((sum, item) => sum + item.value, 0);
+  const theirTotal = theirOffer.reduce((sum, item) => sum + item.value, 0);
 
   const getTradeStatus = () => {
-    if (myTotal === 0 && theirTotal === 0) return { text: "Add fruits to start", color: "text-slate-400", bg: "bg-slate-800/50" };
+    if (myTotal === 0 && theirTotal === 0) return { text: "Add items to start", color: "text-slate-400", bg: "bg-slate-800/50" };
     
     const difference = theirTotal - myTotal;
-    const margin = myTotal * 0.1;
+    const margin = myTotal * 0.1; // 10% Margin for Fair Trade
 
     if (difference > margin) return { text: "BIG WIN 🟢", color: "text-emerald-400", bg: "bg-emerald-500/20", border: "border-emerald-500/50" };
     if (difference < -margin) return { text: "LOSS 🔴", color: "text-red-400", bg: "bg-red-500/20", border: "border-red-500/50" };
@@ -56,7 +95,7 @@ export default function TradeCalculatorPage() {
         </div>
         <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">Blox Fruits <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Trade Calc</span></h1>
         <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
-          Calculate the exact W/F/L (Win/Fair/Loss) of your trades. Values are updated daily based on real Discord trading servers.
+          Calculate the exact W/F/L (Win/Fair/Loss) of your trades. Includes all Fruits and Gamepasses updated for the latest meta.
         </p>
       </div>
 
@@ -64,13 +103,16 @@ export default function TradeCalculatorPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+          
+          {/* You Offer */}
           <div className="bg-black/40 border border-white/5 rounded-3xl p-6 flex flex-col">
             <h2 className="text-2xl font-black text-white mb-6 text-center">You Offer</h2>
             <div className="grid grid-cols-2 gap-3 mb-6 flex-grow">
               {[0, 1, 2, 3].map((i) => (
-                <div key={i} onClick={() => removeFromOffer(i, 'mine')} className="h-24 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center cursor-pointer hover:bg-red-500/20 hover:border-red-500/50 transition-all">
+                <div key={i} onClick={() => removeFromOffer(i, 'mine')} className={`h-24 bg-white/5 border rounded-2xl flex items-center justify-center cursor-pointer hover:bg-red-500/20 hover:border-red-500/50 transition-all ${myOffer[i]?.type === 'gamepass' ? 'border-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.2)]' : 'border-white/10'}`}>
                   {myOffer[i] ? (
-                    <div className="text-center">
+                    <div className="text-center relative w-full h-full flex flex-col items-center justify-center">
+                      {myOffer[i].type === 'gamepass' && <span className="absolute top-1 left-2 text-[8px] font-black text-yellow-400 uppercase tracking-widest">Pass</span>}
                       <span className="text-3xl block mb-1">{myOffer[i].icon}</span>
                       <span className={`text-xs font-bold ${myOffer[i].color}`}>{myOffer[i].name}</span>
                     </div>
@@ -84,6 +126,7 @@ export default function TradeCalculatorPage() {
             </div>
           </div>
 
+          {/* Status Center */}
           <div className="flex flex-col items-center justify-center py-8">
             <div className={`p-8 rounded-[2rem] border-2 w-full text-center shadow-2xl transition-all duration-500 ${status.bg} ${status.border || 'border-white/10'}`}>
               <h3 className={`text-4xl font-black ${status.color} tracking-tighter`}>{status.text}</h3>
@@ -99,13 +142,15 @@ export default function TradeCalculatorPage() {
             </button>
           </div>
 
+          {/* They Offer */}
           <div className="bg-black/40 border border-white/5 rounded-3xl p-6 flex flex-col">
             <h2 className="text-2xl font-black text-white mb-6 text-center">They Offer</h2>
             <div className="grid grid-cols-2 gap-3 mb-6 flex-grow">
               {[0, 1, 2, 3].map((i) => (
-                <div key={i} onClick={() => removeFromOffer(i, 'theirs')} className="h-24 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center cursor-pointer hover:bg-red-500/20 hover:border-red-500/50 transition-all">
+                <div key={i} onClick={() => removeFromOffer(i, 'theirs')} className={`h-24 bg-white/5 border rounded-2xl flex items-center justify-center cursor-pointer hover:bg-red-500/20 hover:border-red-500/50 transition-all ${theirOffer[i]?.type === 'gamepass' ? 'border-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.2)]' : 'border-white/10'}`}>
                   {theirOffer[i] ? (
-                    <div className="text-center">
+                    <div className="text-center relative w-full h-full flex flex-col items-center justify-center">
+                      {theirOffer[i].type === 'gamepass' && <span className="absolute top-1 left-2 text-[8px] font-black text-yellow-400 uppercase tracking-widest">Pass</span>}
                       <span className="text-3xl block mb-1">{theirOffer[i].icon}</span>
                       <span className={`text-xs font-bold ${theirOffer[i].color}`}>{theirOffer[i].name}</span>
                     </div>
@@ -118,22 +163,40 @@ export default function TradeCalculatorPage() {
               <span className="text-2xl font-black text-white">{theirTotal.toLocaleString()}</span>
             </div>
           </div>
+
         </div>
 
+        {/* Inventory Selection */}
         <div className="mt-12 pt-8 border-t border-white/10 relative z-10">
-          <h3 className="text-center text-slate-400 font-bold uppercase tracking-widest mb-6 text-sm">Select Fruits to Add</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {fruitsData.map((fruit) => (
-              <div key={fruit.id} className="flex gap-2 bg-[#111827] p-2 rounded-xl border border-white/5">
-                <button onClick={() => addToOffer(fruit, 'mine')} className="px-3 py-2 bg-blue-500/20 hover:bg-blue-500/40 text-blue-400 rounded-lg text-xs font-bold transition-colors">Me</button>
-                <div className="flex items-center gap-2 px-2">
-                  <span className="text-xl">{fruit.icon}</span>
-                  <span className={`font-bold text-sm ${fruit.color}`}>{fruit.name}</span>
-                </div>
-                <button onClick={() => addToOffer(fruit, 'theirs')} className="px-3 py-2 bg-purple-500/20 hover:bg-purple-500/40 text-purple-400 rounded-lg text-xs font-bold transition-colors">Them</button>
-              </div>
-            ))}
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-6">
+            <h3 className="text-slate-400 font-bold uppercase tracking-widest text-sm mb-4 sm:mb-0">Select Items to Add</h3>
+            <div className="flex gap-4 text-xs font-bold">
+              <span className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-yellow-400"></div> Gamepasses</span>
+              <span className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-blue-400"></div> Fruits</span>
+            </div>
           </div>
+          
+          <div className="max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+            <div className="flex flex-wrap justify-center gap-3">
+              {itemsData.map((item) => (
+                <div key={item.id} className={`flex flex-col gap-2 bg-[#111827] p-3 rounded-2xl border transition-colors w-40 text-center relative overflow-hidden ${item.type === 'gamepass' ? 'border-yellow-500/30 hover:border-yellow-400' : 'border-white/5 hover:border-cyan-500/30'}`}>
+                  
+                  {item.type === 'gamepass' && <div className="absolute top-0 right-0 bg-yellow-500 text-black text-[9px] font-black px-2 py-0.5 rounded-bl-lg uppercase">Pass</div>}
+                  
+                  <div className="flex flex-col items-center justify-center mb-1 pt-2">
+                    <span className="text-3xl mb-1">{item.icon}</span>
+                    <span className={`font-bold text-sm ${item.color} truncate w-full px-1`}>{item.name}</span>
+                    <span className="text-xs text-slate-500 font-mono mt-1">{(item.value / 1000000).toFixed(1)}M</span>
+                  </div>
+                  <div className="flex justify-between gap-2 mt-auto">
+                    <button onClick={() => addToOffer(item, 'mine')} className="flex-1 py-1.5 bg-blue-500/20 hover:bg-blue-500/40 text-blue-400 rounded-lg text-xs font-bold transition-colors">Me</button>
+                    <button onClick={() => addToOffer(item, 'theirs')} className="flex-1 py-1.5 bg-purple-500/20 hover:bg-purple-500/40 text-purple-400 rounded-lg text-xs font-bold transition-colors">Them</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -147,20 +210,20 @@ export default function TradeCalculatorPage() {
           
           <h2>How Does the Blox Fruits Trade Calculator Work?</h2>
           <p>
-            Trading in Blox Fruits can be incredibly stressful. With physical fruit values constantly shifting based on the current PvP meta and upcoming game updates, it is easy to get scammed out of a mythical fruit. Our <strong>Blox Fruits Trade Calculator</strong> solves this by pulling the true "Community Value" of each fruit, rather than the in-game Beli price. We compare the total market value of your offer against their offer to accurately determine if the trade is a <strong>W (Win)</strong>, <strong>F (Fair)</strong>, or <strong>L (Loss)</strong>.
+            Trading in Blox Fruits can be incredibly stressful. With physical fruit values constantly shifting based on the current PvP meta, and Gamepasses carrying immense value, it is easy to get scammed out of a mythical fruit. Our <strong>Blox Fruits Trade Calculator</strong> solves this by pulling the true "Community Value" of each fruit and Gamepass, rather than the fake in-game Beli price. We compare the total market value of your offer against their offer to accurately determine if the trade is a <strong>W (Win)</strong>, <strong>F (Fair)</strong>, or <strong>L (Loss)</strong>.
+          </p>
+
+          <h2>Trading Gamepasses</h2>
+          <p>
+            Gamepasses like the <strong>Fruit Notifier</strong> or <strong>Dark Blade</strong> are the most valuable items in the game because they cost real Robux. For example, a Fruit Notifier is currently valued at roughly 250,000,000 in community value, meaning you would need multiple Kitsune or Dragon fruits to make a fair trade. Always use our calculator before accepting a Gamepass trade to ensure you are not overpaying!
           </p>
 
           <h2>Understanding W / F / L</h2>
           <ul>
             <li><strong>WIN (W):</strong> You are receiving significantly more value than you are giving away. This is a highly profitable trade, and you should accept it immediately.</li>
-            <li><strong>FAIR (F):</strong> The values on both sides are nearly identical. Accept this if you really want the fruit they are offering.</li>
-            <li><strong>LOSS (L):</strong> You are overpaying. The fruits you are giving away are worth much more than what you are receiving. Decline the trade.</li>
+            <li><strong>FAIR (F):</strong> The values on both sides are nearly identical. Accept this if you really want the items they are offering.</li>
+            <li><strong>LOSS (L):</strong> You are overpaying. The fruits or passes you are giving away are worth much more than what you are receiving. Decline the trade.</li>
           </ul>
-
-          <h2>Why In-Game Beli Price Doesn't Matter</h2>
-          <p>
-            Many beginners make the mistake of trusting the Beli value shown on the fruit itself. For example, a Gravity fruit costs 2,500,000 Beli, while a Buddha fruit costs 1,200,000 Beli. However, in the trading community, a Buddha is worth infinitely more than Gravity because Buddha is the undisputed best fruit for grinding and raids. Our calculator completely ignores the fake Beli prices and uses the <strong>Real Trading Value</strong> established by top Discord trading servers.
-          </p>
         </div>
       </div>
     </div>
