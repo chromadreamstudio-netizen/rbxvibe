@@ -55,7 +55,8 @@ export default function RobloxCodesPage() {
         </p>
       </div>
 
-      <div className="bg-[#0B0F19] rounded-[2.5rem] border border-white/10 p-6 md:p-12 shadow-2xl relative overflow-hidden">
+      {/* --- قسم الأداة (قائمة الأكواد) --- */}
+      <div className="bg-[#0B0F19] rounded-[2.5rem] border border-white/10 p-6 md:p-12 shadow-2xl relative overflow-hidden mb-16">
         <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 blur-[100px] rounded-full"></div>
         
         <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/10 relative z-10">
@@ -101,6 +102,46 @@ export default function RobloxCodesPage() {
           )}
         </div>
       </div>
+
+      {/* --- قسم السيو (المحتوى الطويل لجوجل أدسنس) --- */}
+      <div className="bg-[#0B0F19] rounded-[2.5rem] border border-white/5 p-8 md:p-12 shadow-2xl">
+        <div className="prose prose-invert max-w-none 
+                        prose-headings:font-black prose-headings:tracking-tight prose-headings:text-white
+                        prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4
+                        prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-6
+                        prose-ul:text-slate-300 prose-li:mb-2
+                        prose-strong:text-emerald-400">
+          
+          <h2>What Are Roblox Promo Codes?</h2>
+          <p>
+            Roblox promo codes are special, limited-time alphanumeric strings released by game developers or the official Roblox platform. When redeemed, these codes grant players free in-game items, currency, stat resets, or experience boosts (like 2x XP). Our active database is constantly updated to ensure you never miss out on these exclusive rewards, helping you progress faster without spending real money.
+          </p>
+
+          <h2>How to Redeem Blox Fruits Codes</h2>
+          <p>
+            Redeeming codes in Blox Fruits is a simple process, but it requires you to be in the game. Follow these steps to claim your free rewards:
+          </p>
+          <ul>
+            <li><strong>Step 1:</strong> Launch Roblox and open the Blox Fruits game.</li>
+            <li><strong>Step 2:</strong> Once spawned, look for the small Twitter bird icon (or a gift box icon, depending on the update) on the left side of your screen.</li>
+            <li><strong>Step 3:</strong> Click the icon to open the code redemption box.</li>
+            <li><strong>Step 4:</strong> Copy a working code from our database above and paste it into the text field.</li>
+            <li><strong>Step 5:</strong> Click "Redeem" or press Enter. If the code is valid, you will receive a confirmation message and your reward instantly!</li>
+          </ul>
+
+          <h2>Why Do Codes Say "Expired" or "Invalid"?</h2>
+          <p>
+            Game developers release codes to celebrate milestones (like reaching a certain number of likes or visits) or during special updates. These codes are almost always temporary. If a code returns an "Invalid" or "Expired" message, it means the developer has deactivated it. We regularly move these inactive codes to our expired list so you don't waste your time trying them. Remember, codes are also case-sensitive, so it's always best to use our "Copy Code" button to avoid typos.
+          </p>
+
+          <h2>Stay Safe: Beware of Fake Roblox Code Generators</h2>
+          <p>
+            As a dedicated gaming hub, we want to warn our community about scams. <strong>There is no such thing as a "Roblox Code Generator" or "Free Robux Generator."</strong> Any website or app claiming to magically create promo codes or Robux for your account is likely a phishing scam designed to steal your login credentials or infect your device with malware. Always use trusted sources like our live database, which only lists official, verified codes released directly by the game's creators.
+          </p>
+
+        </div>
+      </div>
+
     </div>
   );
 }
