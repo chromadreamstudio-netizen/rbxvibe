@@ -8,9 +8,10 @@ import { ultimatePcBuildGuide } from './07_ultimate_pc_build_guide';
 import { ultimateFpsOptimization } from './08_ultimate_fps_optimization';
 import { ultimateStreamingGuide } from './09_ultimate_streaming_guide';
 import { gta6PcOptimizationGuide } from './10_gta6_pc_optimization_guide';
+import { fortniteFreeSkins } from './11_fortnite_free_skins'; // 🚀 المقالة الجديدة
 
 // ====================================================
-// المجمع الرئيسي للمقالات - اكتملت الترسانة بـ 10 مقالات عملاقة
+// المجمع الرئيسي للمقالات - اكتملت الترسانة بـ 11 مقالة عملاقة
 // ====================================================
 export const articles = [
   ultimateFreeRobux,             // 1. Roblox Robux
@@ -23,4 +24,5 @@ export const articles = [
   ultimateFpsOptimization,       // 8. FPS Optimization
   ultimateStreamingGuide,        // 9. Streaming Guide
   gta6PcOptimizationGuide,       // 10. GTA 6 PC Prep (Mega Trend)
+  fortniteFreeSkins,             // 11. Fortnite Free Skins (SEO Magnet)
 ];
