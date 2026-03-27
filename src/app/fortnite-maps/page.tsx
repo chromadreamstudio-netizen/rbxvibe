@@ -47,12 +47,12 @@ export default function FortniteMapsPage() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10 overflow-x-auto">
           {mapsData.map((map) => (
             <div key={map.id} className="bg-[#111827] p-6 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all group flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="font-black text-xl text-white group-hover:text-cyan-400 transition-colors">{map.name}</h3>
+                  <h3 className="font-black text-xl text-white group-hover:text-cyan-400 transition-colors whitespace-nowrap">{map.name}</h3>
                   <span className={`text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wider ${map.status === 'Active' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}`}>
                     {map.status}
                   </span>
@@ -61,7 +61,7 @@ export default function FortniteMapsPage() {
               </div>
               
               <div className="flex items-center gap-3">
-                <code className={`flex-1 bg-black/50 p-3 rounded-xl font-mono text-center font-bold tracking-widest ${map.status === 'Patched' ? 'text-slate-500 line-through' : 'text-cyan-400'}`}>
+                <code className={`flex-1 bg-black/50 p-3 rounded-xl font-mono text-center font-bold tracking-widest overflow-x-auto whitespace-nowrap ${map.status === 'Patched' ? 'text-slate-500 line-through' : 'text-cyan-400'}`}>
                   {map.code}
                 </code>
                 <button 
@@ -82,6 +82,32 @@ export default function FortniteMapsPage() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* 🚀 2. INTERNAL LINKING BANNER (اللافتة الجديدة) 🚀 */}
+      <div className="mb-24 bg-gradient-to-r from-blue-900 via-purple-700 to-cyan-800 p-1 rounded-3xl border border-white/10 shadow-[0_0_40px_rgba(34,211,238,0.3)] animate-pulse">
+        <Link href="/blog/how-to-get-free-fortnite-skins" className="block bg-[#0B0F19] rounded-[2rem] p-8 md:p-12 hover:bg-white/5 transition-colors relative overflow-hidden group">
+          
+          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-center md:text-left">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 mb-6 backdrop-blur-md text-cyan-400 font-bold text-sm tracking-widest uppercase">
+                🚀 SEO Article
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter leading-tight">
+                How to Get Free <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Fortnite Skins</span> (Legit Methods)
+              </h2>
+              <p className="text-xl text-slate-400 max-w-xl font-medium mb-6">
+                Stop falling for scam generators. Discover safe, Epic Games-approved methods to expand your locker without spending V-Bucks.
+              </p>
+            </div>
+            <div className="text-cyan-500 font-bold text-xl uppercase tracking-widest group-hover:translate-x-2 transition-transform whitespace-nowrap">
+              Read Guide &rarr;
+            </div>
+          </div>
+        </Link>
       </div>
 
       {/* --- قسم السيو وتطبيق فكرتك الذكية (المحتوى الطويل لجوجل أدسنس) --- */}
