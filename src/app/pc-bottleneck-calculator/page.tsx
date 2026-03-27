@@ -207,26 +207,8 @@ export default function BottleneckCalculatorPage() {
             <li><strong>CPU Bottleneck (Common in 1080p Gaming):</strong> This happens when your graphics card is generating frames faster than your processor can handle the physics, AI, and game logic. This results in severe stuttering, screen freezing, and wildly inconsistent frame rates. E-sports games like Valorant and CS2 are heavily CPU-dependent.</li>
             <li><strong>GPU Bottleneck (Common in 4K Gaming):</strong> This happens when your processor is easily handling the game, but your graphics card is struggling to render the graphics at high resolutions. This is actually the "ideal" bottleneck to have, as it usually results in a smooth, consistent framerate, even if it's lower. Heavy single-player games like Cyberpunk 2077 rely almost entirely on the GPU.</li>
           </ul>
-
-          <h2>Will My PC Run GTA 6?</h2>
-          <p>
-            Grand Theft Auto VI (GTA 6) is undoubtedly the most anticipated game of the decade. While Rockstar Games has not released official PC system requirements yet, hardware experts have analyzed the proprietary RAGE engine used in the console trailers to estimate the necessary horsepower.
-          </p>
-          <p>
-            Because GTA 6 features a massive, densely populated open world with complex AI routines for thousands of NPCs, it is expected to be incredibly CPU-heavy. Even if you have a top-tier GPU, pairing it with an older 4-core or 6-core processor will likely result in a severe CPU bottleneck in dense city areas like Vice City. We recommend at least an 8-core modern processor (like the Ryzen 7 5800X3D or Intel i7-13700K) to maintain a stable 60 FPS.
-          </p>
-
-          <h2>How to Fix a PC Bottleneck Without Buying New Parts</h2>
-          <p>
-            If our calculator shows a high bottleneck percentage, don't panic. You can often mitigate the issue by tweaking your settings:
-          </p>
-          <ul>
-            <li><strong>If you have a CPU Bottleneck:</strong> Increase your game's graphical settings (Shadows, Textures, Resolution). This sounds counter-intuitive, but making the game harder to render forces the GPU to slow down, giving your struggling CPU time to catch up, resulting in a smoother, stutter-free experience.</li>
-            <li><strong>If you have a GPU Bottleneck:</strong> Lower your graphics settings or enable upscaling technologies like NVIDIA DLSS or AMD FSR. This drastically reduces the workload on your graphics card.</li>
-          </ul>
         </div>
       </div>
-
     </div>
   );
 }

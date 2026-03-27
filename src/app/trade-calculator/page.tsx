@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-// قاعدة بيانات مصغرة لقيم الفواكه السوقية (الأسعار الحقيقية للتداول وليس سعر اللعبة)
 const fruitsData = [
   { id: 1, name: "Kitsune", value: 115000000, icon: "🦊", color: "text-blue-400" },
   { id: 2, name: "Dragon", value: 90000000, icon: "🐉", color: "text-orange-400" },
@@ -32,12 +31,11 @@ export default function TradeCalculatorPage() {
   const myTotal = myOffer.reduce((sum, fruit) => sum + fruit.value, 0);
   const theirTotal = theirOffer.reduce((sum, fruit) => sum + fruit.value, 0);
 
-  // منطق حساب المكسب والخسارة
   const getTradeStatus = () => {
     if (myTotal === 0 && theirTotal === 0) return { text: "Add fruits to start", color: "text-slate-400", bg: "bg-slate-800/50" };
     
     const difference = theirTotal - myTotal;
-    const margin = myTotal * 0.1; // 10% margin for fair trade
+    const margin = myTotal * 0.1;
 
     if (difference > margin) return { text: "BIG WIN 🟢", color: "text-emerald-400", bg: "bg-emerald-500/20", border: "border-emerald-500/50" };
     if (difference < -margin) return { text: "LOSS 🔴", color: "text-red-400", bg: "bg-red-500/20", border: "border-red-500/50" };
@@ -62,13 +60,10 @@ export default function TradeCalculatorPage() {
         </p>
       </div>
 
-      {/* --- الأداة التفاعلية --- */}
       <div className="bg-[#0B0F19] rounded-[3rem] border border-white/10 p-6 md:p-12 shadow-2xl mb-16 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
-          
-          {/* الجانب الأيسر (أنت تقدم) */}
           <div className="bg-black/40 border border-white/5 rounded-3xl p-6 flex flex-col">
             <h2 className="text-2xl font-black text-white mb-6 text-center">You Offer</h2>
             <div className="grid grid-cols-2 gap-3 mb-6 flex-grow">
@@ -89,7 +84,6 @@ export default function TradeCalculatorPage() {
             </div>
           </div>
 
-          {/* المنتصف (النتيجة) */}
           <div className="flex flex-col items-center justify-center py-8">
             <div className={`p-8 rounded-[2rem] border-2 w-full text-center shadow-2xl transition-all duration-500 ${status.bg} ${status.border || 'border-white/10'}`}>
               <h3 className={`text-4xl font-black ${status.color} tracking-tighter`}>{status.text}</h3>
@@ -105,7 +99,6 @@ export default function TradeCalculatorPage() {
             </button>
           </div>
 
-          {/* الجانب الأيمن (هم يقدمون) */}
           <div className="bg-black/40 border border-white/5 rounded-3xl p-6 flex flex-col">
             <h2 className="text-2xl font-black text-white mb-6 text-center">They Offer</h2>
             <div className="grid grid-cols-2 gap-3 mb-6 flex-grow">
@@ -125,10 +118,8 @@ export default function TradeCalculatorPage() {
               <span className="text-2xl font-black text-white">{theirTotal.toLocaleString()}</span>
             </div>
           </div>
-
         </div>
 
-        {/* قائمة اختيار الفواكه */}
         <div className="mt-12 pt-8 border-t border-white/10 relative z-10">
           <h3 className="text-center text-slate-400 font-bold uppercase tracking-widest mb-6 text-sm">Select Fruits to Add</h3>
           <div className="flex flex-wrap justify-center gap-4">
@@ -146,7 +137,6 @@ export default function TradeCalculatorPage() {
         </div>
       </div>
 
-      {/* --- قسم السيو (SEO Content للحصول على تقييم عالي في جوجل) --- */}
       <div className="bg-[#0B0F19] rounded-[3rem] border border-white/5 p-8 md:p-16 shadow-2xl relative z-10">
         <div className="prose prose-invert max-w-none 
                         prose-headings:font-black prose-headings:tracking-tight prose-headings:text-white
@@ -171,20 +161,8 @@ export default function TradeCalculatorPage() {
           <p>
             Many beginners make the mistake of trusting the Beli value shown on the fruit itself. For example, a Gravity fruit costs 2,500,000 Beli, while a Buddha fruit costs 1,200,000 Beli. However, in the trading community, a Buddha is worth infinitely more than Gravity because Buddha is the undisputed best fruit for grinding and raids. Our calculator completely ignores the fake Beli prices and uses the <strong>Real Trading Value</strong> established by top Discord trading servers.
           </p>
-
-          <h2>Top Tips to Avoid Getting Scammed</h2>
-          <p>
-            Scammers are everywhere in the Second and Third Seas. Always follow these rules:
-          </p>
-          <ul>
-            <li><strong>Never Trust Trust-Trades:</strong> If someone asks you to drop a fruit or give them a fruit first, and promises to give you a Gamepass later, it is a scam 100% of the time. Only use the official trading table.</li>
-            <li><strong>Check Values Mid-Trade:</strong> Tell the person to hold on, open our calculator on your phone or second monitor, and double-check the values before hitting accept.</li>
-            <li><strong>Beware of Fake Links:</strong> Scammers in Discord will send links to fake Roblox login pages claiming to be their profile. Never click random links. Always search their username manually in the Roblox app.</li>
-          </ul>
-
         </div>
       </div>
-
     </div>
   );
 }

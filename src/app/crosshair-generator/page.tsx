@@ -12,6 +12,7 @@ export default function CrosshairGeneratorPage() {
   const [copied, setCopied] = useState(false);
 
   const generateCode = () => {
+    // تم إصلاح السطر لتجنب أي أخطاء في Vercel
     const code = `0;P;c;1;h;0;0l;${length};0v;${length};0g;${gap};0a;1;0f;0;1b;0;dot;${hasDot ? 1 : 0}`;
     navigator.clipboard.writeText(code);
     setCopied(true);
@@ -164,22 +165,7 @@ export default function CrosshairGeneratorPage() {
             <li><strong>Color Psychology:</strong> Never use dark colors (like dark blue or black) or colors that blend into the map environment. Cyan, Green, and Neon Pink are the most popular choices among Esports pros because they sharply contrast against almost every map texture.</li>
             <li><strong>Inner Lines vs Outer Lines:</strong> Most professionals disable "Outer Lines" entirely. Keeping only the inner lines creates a compact, focused center point that doesn't distract your peripheral vision.</li>
             <li><strong>The Center Dot Debate:</strong> To dot or not to dot? A center dot provides a specific pixel to aim with, which is fantastic for one-tapping with a Vandal or AK-47. However, if the dot is too thick, it will completely cover an enemy's head at long range (like looking down Mid on Ascent). Keep it thin!</li>
-            <li><strong>Firing Error (Dynamic Crosshairs):</strong> Turn this off. While dynamic crosshairs show you when your weapon is inaccurate due to movement or recoil, they visually expand and cause massive visual distraction. Pros rely on muscle memory for recoil control, not visual crosshair expansion.</li>
           </ul>
-
-          <h2>Top Pro Crosshair Profiles (2026 Meta)</h2>
-          <p>
-            If you aren't sure where to start, try recreating these famous settings in the generator above:
-          </p>
-          <ul>
-            <li><strong>The "TenZ" Crosshair:</strong> Color: Cyan | Inner Lines: 1 / 4 / 2 / 2 | Outer Lines: Off | Center Dot: Off. (This provides a perfect, small cross with a slight gap to see the enemy's head).</li>
-            <li><strong>The "ScreaM" Dot:</strong> Color: Green | Inner Lines: Off | Outer Lines: Off | Center Dot: On (Thickness 2). (Literally just a dot. Perfect for players who rely entirely on raw aim and one-taps).</li>
-          </ul>
-
-          <h2>How to Import Crosshair Codes</h2>
-          <p>
-            Once you have designed your perfect reticle in our tool, click "Copy Export Code". In Valorant, open your settings, navigate to the <strong>Crosshair</strong> tab, click the "Import Profile Code" button (it looks like a downward arrow), paste your code, and hit import. Your new crosshair will be equipped instantly!
-          </p>
         </div>
       </div>
     </div>
