@@ -108,30 +108,55 @@ export default function HomePage() {
       </section>
 
       {/* ========================================= */}
-      {/* 4. MINI GAMES & DEALS (استعادة الألعاب بلمسة عصرية) */}
+      {/* 4. ESPORTS TRAINING ARENA (استعادة جميع الـ 8 ألعاب باحترافية) */}
       {/* ========================================= */}
       <section className="py-24 px-4 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
           
           <div className="lg:col-span-2">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-8 flex items-center gap-3">
-              <span className="text-yellow-400">🎮</span> Take a Break: Mini Games
+              <span className="text-yellow-400">⚡</span> Esports Training Arena
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <Link href="/ai-game" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-6 hover:bg-yellow-500/10 hover:border-yellow-500/50 transition-all group text-center shadow-lg">
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">🤖</div>
-                <h3 className="text-white font-bold mb-1">AI Emoji Test</h3>
-                <p className="text-xs text-slate-400">Guess the game!</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <Link href="/reaction-test" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-5 hover:bg-blue-500/10 hover:border-blue-500/50 transition-all group text-center shadow-lg flex flex-col justify-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">🎯</div>
+                <h3 className="text-white font-bold mb-1 text-sm">Reflex Trainer</h3>
+                <p className="text-[10px] text-slate-400">Test raw MS reaction.</p>
               </Link>
-              <Link href="/trivia" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-6 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all group text-center shadow-lg">
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">🧠</div>
-                <h3 className="text-white font-bold mb-1">Gaming Trivia</h3>
-                <p className="text-xs text-slate-400">Test your knowledge.</p>
+              <Link href="/typing-test" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-5 hover:bg-purple-500/10 hover:border-purple-500/50 transition-all group text-center shadow-lg flex flex-col justify-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">⌨️</div>
+                <h3 className="text-white font-bold mb-1 text-sm">APM Tracker</h3>
+                <p className="text-[10px] text-slate-400">Typing speed stats.</p>
               </Link>
-              <Link href="/reaction-test" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-6 hover:bg-blue-500/10 hover:border-blue-500/50 transition-all group text-center shadow-lg">
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">⚡</div>
-                <h3 className="text-white font-bold mb-1">Reaction Test</h3>
-                <p className="text-xs text-slate-400">Are you fast enough?</p>
+              <Link href="/spacebar-test" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-5 hover:bg-rose-500/10 hover:border-rose-500/50 transition-all group text-center shadow-lg flex flex-col justify-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">🚀</div>
+                <h3 className="text-white font-bold mb-1 text-sm">CPS Benchmark</h3>
+                <p className="text-[10px] text-slate-400">Clicks per second.</p>
+              </Link>
+              <Link href="/memory-game" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-5 hover:bg-cyan-500/10 hover:border-cyan-500/50 transition-all group text-center shadow-lg flex flex-col justify-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">🧩</div>
+                <h3 className="text-white font-bold mb-1 text-sm">Cognitive Matrix</h3>
+                <p className="text-[10px] text-slate-400">Working memory lab.</p>
+              </Link>
+              <Link href="/trivia" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-5 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all group text-center shadow-lg flex flex-col justify-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">🧠</div>
+                <h3 className="text-white font-bold mb-1 text-sm">Hardcore Trivia</h3>
+                <p className="text-[10px] text-slate-400">Pro gaming exams.</p>
+              </Link>
+              <Link href="/ai-game" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-5 hover:bg-yellow-500/10 hover:border-yellow-500/50 transition-all group text-center shadow-lg flex flex-col justify-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">🤖</div>
+                <h3 className="text-white font-bold mb-1 text-sm">AI Decoder</h3>
+                <p className="text-[10px] text-slate-400">Decode LLM emojis.</p>
+              </Link>
+              <Link href="/snake-game" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-5 hover:bg-green-500/10 hover:border-green-500/50 transition-all group text-center shadow-lg flex flex-col justify-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">🐍</div>
+                <h3 className="text-white font-bold mb-1 text-sm">Retro Snake</h3>
+                <p className="text-[10px] text-slate-400">Classic path warmup.</p>
+              </Link>
+              <Link href="/tic-tac-toe" className="bg-[#0B0F19] border border-white/5 rounded-2xl p-5 hover:bg-red-500/10 hover:border-red-500/50 transition-all group text-center shadow-lg flex flex-col justify-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">❌⭕</div>
+                <h3 className="text-white font-bold mb-1 text-sm">Tactical X-O</h3>
+                <p className="text-[10px] text-slate-400">Quick strategy duel.</p>
               </Link>
             </div>
           </div>
@@ -140,11 +165,11 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-black text-white mb-8 flex items-center gap-3">
               <span className="text-rose-500">🔥</span> Top Deals
             </h2>
-            <Link href="/deals" className="block relative bg-gradient-to-br from-rose-600 to-orange-600 rounded-3xl p-8 overflow-hidden group hover:shadow-[0_0_30px_rgba(225,29,72,0.4)] transition-all">
+            <Link href="/deals" className="block relative bg-gradient-to-br from-rose-600 to-orange-600 rounded-3xl p-8 overflow-hidden group hover:shadow-[0_0_30px_rgba(225,29,72,0.4)] transition-all h-[calc(100%-4rem)] flex flex-col justify-center">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 blur-[30px] rounded-full pointer-events-none"></div>
-              <h3 className="text-2xl font-black text-white mb-2 relative z-10">Gamer Discounts</h3>
-              <p className="text-rose-100 font-medium mb-6 relative z-10">Up to 82% off on VPNs, gear, and software.</p>
-              <span className="bg-white text-rose-600 font-black px-4 py-2 rounded-xl group-hover:bg-black group-hover:text-white transition-colors relative z-10">
+              <h3 className="text-3xl font-black text-white mb-4 relative z-10">Gamer Discounts</h3>
+              <p className="text-rose-100 font-medium mb-8 relative z-10 text-lg">Up to 82% off on VPNs, gear, and software.</p>
+              <span className="bg-white text-rose-600 font-black px-6 py-3 rounded-xl group-hover:bg-black group-hover:text-white transition-colors relative z-10 inline-block text-center">
                 View Deals &rarr;
               </span>
             </Link>
@@ -154,7 +179,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================= */}
-      {/* 5. FEATURED WIKI (صورة جديدة واحترافية) */}
+      {/* 5. FEATURED WIKI */}
       {/* ========================================= */}
       <section className="py-24 px-4 bg-[#0B0F19] border-y border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto text-center mb-16">
@@ -168,7 +193,6 @@ export default function HomePage() {
           <div className="w-full md:w-1/2 relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl blur opacity-20"></div>
             <div className="relative bg-[#111827] border border-white/10 rounded-2xl overflow-hidden group">
-              {/* صورة احترافية تناسب الموسوعة (RGB/Gaming Keyboard) */}
               <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop" alt="Gaming Database" className="w-full h-56 object-cover opacity-70 group-hover:scale-105 transition-transform duration-500"/>
               <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded-full border border-cyan-500/30 text-cyan-400 text-xs font-black tracking-widest uppercase">Library</div>
               <div className="p-6">
@@ -191,7 +215,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================= */}
-      {/* 6. FEATURED BLOG (صورة فورتنايت حقيقية) */}
+      {/* 6. FEATURED BLOG */}
       {/* ========================================= */}
       <section className="py-24 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -215,7 +239,6 @@ export default function HomePage() {
               </div>
 
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                {/* صورة فورتنايت احترافية للجيمنج */}
                 <img 
                   src="https://images.unsplash.com/photo-1589241062272-c0a1f4360181?q=80&w=1000&auto=format&fit=crop" 
                   alt="Fortnite Guide" 
@@ -233,7 +256,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================= */}
-      {/* 7. TESTIMONIALS & FAQ (كما هما لحفظ الثقة) */}
+      {/* 7. FAQ */}
       {/* ========================================= */}
       <section className="py-24 px-4 bg-black/40 border-t border-white/5 relative z-10">
         <div className="max-w-4xl mx-auto">

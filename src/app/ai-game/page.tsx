@@ -3,84 +3,87 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function AIGame() {
-  const questions = [
-    { emoji: "⛏️🧱🧟‍♂️🗡️", answer: "Minecraft", options: ["Roblox", "Minecraft", "Terraria", "Fortnite"] },
-    { emoji: "🪂🏝️🔫🚌", answer: "Fortnite", options: ["PUBG", "Apex Legends", "Fortnite", "Free Fire"] },
-    { emoji: "🏎️⚽🚗", answer: "Rocket League", options: ["FIFA", "Rocket League", "Need for Speed", "Gran Turismo"] },
-    { emoji: "🤠🐎🔫🚂", answer: "Red Dead Redemption", options: ["GTA V", "Red Dead Redemption", "Cyberpunk", "Mafia"] },
-    { emoji: "🧱🟥🟧🟨🟩🟦", answer: "Roblox", options: ["Minecraft", "Lego Worlds", "Roblox", "Tetris"] }
-  ];
+const db = [
+  { emoji: "⛏️🧱🧟‍♂️🗡️", answer: "Minecraft", options: ["Roblox", "Minecraft", "Terraria", "Fortnite"] },
+  { emoji: "🪂🏝️🔫🚌", answer: "Fortnite", options: ["PUBG", "Apex Legends", "Fortnite", "Warzone"] },
+  { emoji: "🏎️⚽🚗🚀", answer: "Rocket League", options: ["FIFA", "Rocket League", "Need for Speed", "Forza"] },
+  { emoji: "🤠🐎🔫🚂", answer: "Red Dead Redemption", options: ["GTA V", "Red Dead Redemption", "Cyberpunk", "Mafia"] },
+  { emoji: "🧱🟥🟧🟩🟦", answer: "Roblox", options: ["Minecraft", "Lego Worlds", "Roblox", "Tetris"] },
+  { emoji: "⚔️🛡️🐉🔥", answer: "Elden Ring", options: ["Skyrim", "Elden Ring", "Witcher 3", "Dark Souls"] },
+  { emoji: "🕵️‍♂️📦🔪🐍", answer: "Metal Gear Solid", options: ["Hitman", "Splinter Cell", "Metal Gear Solid", "Assassin's Creed"] },
+  { emoji: "🔫💣💣💣", answer: "CS2", options: ["Valorant", "Call of Duty", "CS2", "Overwatch"] },
+  { emoji: "🕷️🏙️🕸️🦸‍♂️", answer: "Spider-Man", options: ["Batman", "Infamous", "Spider-Man", "Prototype"] },
+  { emoji: "🪓❄️👦🛶", answer: "God of War", options: ["God of War", "Horizon", "Bloodborne", "Hellblade"] }
+];
 
+export default function AIGame() {
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
   const handleAnswer = (selected: string) => {
-    if (selected === questions[currentQ].answer) {
-      setScore(score + 1);
-    }
-    
+    if (selected === db[currentQ].answer) setScore(score + 1);
     const nextQ = currentQ + 1;
-    if (nextQ < questions.length) {
-      setCurrentQ(nextQ);
-    } else {
-      setShowResult(true);
-    }
+    if (nextQ < db.length) setCurrentQ(nextQ);
+    else setShowResult(true);
   };
 
-  const restartGame = () => {
-    setCurrentQ(0);
-    setScore(0);
-    setShowResult(false);
-  };
+  const reset = () => { setCurrentQ(0); setScore(0); setShowResult(false); };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 text-center">
-      <Link href="/" className="text-emerald-400 hover:text-emerald-300 mb-6 inline-block">&larr; Back to Home</Link>
-      
-      <h1 className="text-4xl font-extrabold text-white mb-4">AI Emoji Guesser</h1>
-      <p className="text-slate-400 mb-10">Can you guess the video game based on the AI-generated emojis? Test your gaming knowledge!</p>
+    <div className="max-w-4xl mx-auto mt-12 px-4 pb-24 animate-fade-in">
+      <Link href="/" className="text-slate-400 hover:text-yellow-400 mb-8 inline-flex items-center gap-2 font-bold transition-all hover:-translate-x-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+        <span>&larr;</span> Back to Home
+      </Link>
 
-      {/* مساحة إعلانية ستكون نشطة جداً هنا بسبب تفاعل اللاعب */}
-      <div className="w-full h-24 bg-slate-800 flex items-center justify-center border border-dashed border-slate-600 mb-10 rounded-lg">
-        <span className="text-slate-500 text-sm">AdSense Banner (High CTR Area)</span>
-      </div>
+      <div className="bg-[#0B0F19] rounded-[3rem] border border-white/10 p-8 md:p-16 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
-      <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-xl max-w-xl mx-auto">
+        <div className="text-center mb-12 relative z-10">
+          <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight">AI Emoji <span className="text-yellow-400">Decoder</span></h1>
+          <p className="text-slate-400 mt-4">The AI has compressed famous video games into emojis. Can you decode them?</p>
+        </div>
+
         {showResult ? (
-          <div className="animate-fade-in">
-            <h2 className="text-3xl font-bold text-white mb-4">Game Over!</h2>
-            <p className="text-xl text-slate-300 mb-6">You scored {score} out of {questions.length}</p>
-            {score === questions.length ? (
-              <p className="text-emerald-400 font-bold mb-8 text-2xl">Perfect Score! You are a True Gamer! 🏆</p>
-            ) : (
-              <p className="text-blue-400 font-bold mb-8 text-xl">Good effort! But you can do better. 🎮</p>
-            )}
-            <button onClick={restartGame} className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-8 rounded-lg transition shadow-lg">
-              Play Again
+          <div className="text-center animate-fade-in relative z-10">
+            <div className="text-8xl mb-6">{score >= 8 ? "🏆" : score >= 5 ? "👍" : "💀"}</div>
+            <h2 className="text-5xl font-black text-white mb-2">{score} / {db.length}</h2>
+            <p className="text-xl text-yellow-400 font-bold mb-8">
+              {score >= 8 ? "AI Mastermind! Excellent job." : "The AI defeated you. Try again!"}
+            </p>
+            <button onClick={reset} className="bg-yellow-500 text-black font-black py-4 px-10 rounded-xl hover:bg-yellow-400 transition-colors shadow-[0_0_20px_rgba(234,179,8,0.4)]">
+              Reboot AI System
             </button>
           </div>
         ) : (
-          <div className="animate-fade-in">
-            <p className="text-slate-400 mb-4 font-semibold uppercase tracking-wider">Question {currentQ + 1} of {questions.length}</p>
-            <div className="text-6xl mb-10 bg-slate-900 py-6 rounded-xl border border-slate-700">
-              {questions[currentQ].emoji}
+          <div className="relative z-10">
+            <div className="w-full bg-white/5 rounded-full h-2 mb-8">
+              <div className="bg-yellow-400 h-2 rounded-full transition-all duration-500" style={{ width: `${((currentQ) / db.length) * 100}%` }}></div>
+            </div>
+            
+            <div className="bg-black/50 border border-white/5 rounded-3xl p-10 text-center mb-8 shadow-inner">
+              <p className="text-slate-500 font-bold uppercase tracking-widest text-xs mb-6">Processing Image Data...</p>
+              <div className="text-6xl md:text-8xl tracking-widest filter drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                {db[currentQ].emoji}
+              </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {questions[currentQ].options.map((option, index) => (
-                <button 
-                  key={index}
-                  onClick={() => handleAnswer(option)}
-                  className="bg-slate-700 hover:bg-emerald-500 hover:text-slate-900 text-white font-bold py-4 px-6 rounded-lg transition duration-200 border border-slate-600 hover:border-emerald-500"
-                >
-                  {option}
+              {db[currentQ].options.map((opt, i) => (
+                <button key={i} onClick={() => handleAnswer(opt)} className="bg-[#111827] border border-white/10 hover:border-yellow-500/50 hover:bg-yellow-500/10 text-white font-bold py-5 rounded-2xl transition-all text-lg">
+                  {opt}
                 </button>
               ))}
             </div>
           </div>
         )}
+      </div>
+
+      <div className="bg-[#0B0F19] rounded-[3rem] border border-white/5 p-8 md:p-12 shadow-2xl mt-16">
+        <div className="prose prose-invert max-w-none prose-headings:font-black prose-headings:text-white prose-h2:text-3xl prose-p:text-slate-300">
+          <h2>The Rise of AI in Gaming</h2>
+          <p>Artificial Intelligence is changing the landscape of gaming forever. From dynamic NPC behavior in open-world games to procedural generation of assets, AI is the future. Our Emoji Decoder is a fun simulation of how Large Language Models (LLMs) interpret and compress vast amounts of gaming pop culture into simple unicode characters.</p>
+        </div>
       </div>
     </div>
   );
